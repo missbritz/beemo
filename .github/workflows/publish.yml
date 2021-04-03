@@ -26,16 +26,18 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5 
+        with:
+          node-version: 12
+      - run: npm install -g yarn
+      - run: yarn
+      - run: yarn build
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: echo Add other actions to build- 
-        
       - name: S3 Deploy
         # You may pin to the exact commit or the version.
         # uses: Reggionick/s3-deploy@d78e6b5a588e326e4b1afb9b33df2ce28929e5e1
@@ -44,9 +46,9 @@ jobs:
           # Directory to deploy
           folder: /
           # Name of AWS Bucket
-          bucket: ${{ secrets.AWS_BUCKET }}
+          bucket: ${{ AWS_BUCKET }}
           # The destination bucket region
-          bucket-region: ${{ secrets.AWS_BUCKET_REGION }}
+          bucket-region: ${{ AWS_BUCKET_REGION }}
           # AWS CloudFront distribution ID
           #dist-id: # optional
           # AWS CloudFront invalidation path(s)
