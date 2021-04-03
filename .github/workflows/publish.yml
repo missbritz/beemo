@@ -46,9 +46,9 @@ jobs:
           # Directory to deploy
           folder: /
           # Name of AWS Bucket
-          bucket: ${{ AWS_BUCKET }}
+          bucket: ${{ secrets.AWS_BUCKET }}
           # The destination bucket region
-          bucket-region: ${{ AWS_BUCKET_REGION }}
+          bucket-region: ${{ secrets.AWS_BUCKET_REGION }}
           # AWS CloudFront distribution ID
           #dist-id: # optional
           # AWS CloudFront invalidation path(s)
