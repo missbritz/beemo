@@ -5,7 +5,12 @@
 .env.build
 # Dependency directories
 node_modules/
+packages/
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+# Export
+out/
+# etc
+.DS_Store
