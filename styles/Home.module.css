@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -5,7 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: rgb(242, 242, 242);
 }
 
 .main {
@@ -15,11 +20,48 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  font-family: 'Amatic SC', cursive;
 }
 
-.p {
-  color:white;
+.greeting {
+  margin-bottom: 0;
+  font-size: 1.5rem;
+}
+
+.title {
+  color: #333333;
+  font-weight: normal;
+  font-size: 5rem;
+  margin: 1rem;
+}
+
+.titleBold {
+  font-weight: bold;
+}
+
+.titleNonBold {
+  font-weight: normal;
+  margin: 0;
+  font-size: 1.5rem;
+  color: #666666;
+}
+
+.border {
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #ffffff;
+  width: 100%;
+  margin: 3rem 1rem;
+}
+
+.pic {
+  border-radius: 100px;
+  border: 5px solid #ffffff;
+}
+
+.Typewriter__wrapper,
+.Typewriter__cursor,
+.Typewriter {
+  font-size: 1.4rem;
 }
 
 @media (max-width: 600px) {

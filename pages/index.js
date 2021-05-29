@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import Typewriter from 'typewriter-effect';
+import Typewriter from 'typewriter-effect'
+import Image from 'next/image'
+
+const Emoji = props => (
+<span role="img" aria-label={props.symbol}>{props.symbol}</span>
+);
 
 const Home = () => {
   //Todo:
@@ -10,17 +15,14 @@ const Home = () => {
   const [next, setNext] = useState(0);
   const facts = [
     "i'm a software engineer",
-    "i run 10 miles per week",
+    "i run at least 10 miles per week",
     "i love music",
-    "i turn coffee to codes"
+    "i turn coffee to codes",
+    "i've been working on a gaming app, wip! yas!",
+    "i do yoga",
+    "i'm nothing fancy, just pure awesomeness! :P",
+    "i'm a UI designer turned UI Engineer"
   ]
-
-  // useEffect(() => {
-  //   //TODO:
-  //   // - Update source of caption 
-  //   setText(facts[next]);
-    
-  // }, [next])
 
   
   return (
@@ -31,17 +33,23 @@ const Home = () => {
       </Head>
 
       <main className={styles.main}>
+        <Image className={styles.pic} src="/assets/britta oblan - software engineer.jpg" alt="Britta Oblan - Software Engineer from PH" width={150} height={150} />
+        <p className={styles.greeting}>hi! <Emoji symbol="👋" /> I'm</p>
         <h1 className={styles.title}>
-          hi! I'm britta oblan
+          <span className={styles.titleBold}>britta oblan</span>
         </h1>
-        <Typewriter
-          options={{
-            strings: facts,
-            autoStart: true,
-            pauseFor: 2500,
-            loop: true
-          }}
-        />
+        <h2 className={styles.titleNonBold}>Software Engineer from PH, living in SG</h2>
+        <hr className={styles.border}/>
+        <div className={styles.Typewriter}>
+          <Typewriter
+            options={{
+              strings: facts,
+              autoStart: true,
+              pauseFor: 2500,
+              loop: true
+            }}
+          />
+        </div>
       </main>
     </div>
   )
