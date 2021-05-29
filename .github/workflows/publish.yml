@@ -36,7 +36,7 @@ jobs:
           node-version: 12
       - run: npm install -g yarn
       - run: yarn
-      - run: yarn build
+      - run: yarn export
 
       - name: S3 Deploy
         # You may pin to the exact commit or the version.
