@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Typewriter from 'typewriter-effect'
-import Image from 'next/image'
 
 const Emoji = props => (
 <span role="img" aria-label={props.symbol}>{props.symbol}</span>
@@ -33,7 +32,7 @@ const Home = () => {
       </Head>
 
       <main className={styles.main}>
-        <Image className={styles.pic} src="/assets/britta oblan - software engineer.jpg" alt="Britta Oblan - Software Engineer from PH" width={150} height={150} />
+        <img className={styles.pic} src="/assets/britta oblan - software engineer.jpg" alt="Britta Oblan - Software Engineer from PH" width={150} height={150} />
         <p className={styles.greeting}>hi! <Emoji symbol="👋" /> I'm</p>
         <h1 className={styles.title}>
           <span className={styles.titleBold}>britta oblan</span>
