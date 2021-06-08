@@ -2,10 +2,25 @@ import React, { useState } from 'react';
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Typewriter from 'typewriter-effect'
+import { AiFillLinkedin, AiOutlineGithub, AiFillInstagram } from "react-icons/ai";
 
 const Emoji = props => (
-<span role="img" aria-label={props.symbol}>{props.symbol}</span>
+  <span role="img" aria-label={props.symbol}>{props.symbol}</span>
 );
+
+const SocialMedia = props => {
+   return (
+    <a href={props.link} target="_blank">
+      {props.children}
+    </a>
+   )
+}
+
+const myConfig = {
+  instagram: 'https://www.linkedin.com/in/brittaoblan',
+  linkedin: 'https://www.instagram.com/missbritz/',
+  github: 'https://github.com/missbritz'
+}
 
 const Home = () => {
   //Todo:
@@ -48,6 +63,14 @@ const Home = () => {
               loop: true
             }}
           />
+        </div>
+        <hr className={styles.border}/>
+        <div className={styles.socialContainer}>
+        <span>Follow me on </span>
+          <div className={styles.social}>
+            <SocialMedia link={myConfig.linkedin}><AiFillLinkedin size="1.5em" className={styles.icons}/></SocialMedia> 
+            <SocialMedia link={myConfig.github}><AiOutlineGithub size="1.5em" className={styles.icons}/></SocialMedia> <SocialMedia link={myConfig.instagram}><AiFillInstagram size="1.5em" className={styles.icons}/></SocialMedia>
+          </div>
         </div>
       </main>
     </div>
