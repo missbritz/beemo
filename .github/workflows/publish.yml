@@ -67,17 +67,17 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.2.11
         with:
           # Private Key
-          SSH_PRIVATE_KEY: ${{ secret.AWS_EC_SSH_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.AWS_EC_SSH_KEY }}
           # Remote host
-          REMOTE_HOST: ${{ secret.AWS_EC2_HOST }}
+          REMOTE_HOST: ${{ secrets.AWS_EC2_HOST }}
           # Remote user
-          REMOTE_USER: ${{ secret.AWS_EC2_USER }}
+          REMOTE_USER: ${{ secrets.AWS_EC2_USER }}
           # Remote port
-          REMOTE_PORT: ${{ secret.AWS_EC2_PORT }} # optional, default is 22
+          REMOTE_PORT: ${{ secrets.AWS_EC2_PORT }} # optional, default is 22
           # Source directory
           SOURCE:  "./" # optional, default is 
           # Target directory
-          TARGET: $ {{ secret.AWS_EC2_DIRECTORY }} # optional, default is /home/REMOTE_USER/
+          TARGET: $ {{ secrets.AWS_EC2_DIRECTORY }} # optional, default is /home/REMOTE_USER/
           # Arguments to pass to rsync
           ARGS: "" # optional, default is -rltgoDzvO
           # An array of folder to exclude
