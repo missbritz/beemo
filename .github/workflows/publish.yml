@@ -43,14 +43,8 @@ jobs:
           REMOTE_USER: ${{ secrets.AWS_EC2_USER }}
           # Remote port
           REMOTE_PORT: ${{ secrets.AWS_EC2_PORT }} # optional, default is 22
-          # Source directory
-          SOURCE:  "/" # optional, default is 
           # Target directory
           TARGET: $ {{ secrets.AWS_EC2_DIRECTORY }} # optional, default is /home/REMOTE_USER/
-          # Arguments to pass to rsync
-          ARGS: "" # optional, default is -rltgoDzvO
-          # An array of folder to exclude
-          EXCLUDE: "/node_modules/"
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.5 
