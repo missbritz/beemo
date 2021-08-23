@@ -35,6 +35,7 @@ jobs:
         with:
           node-version: 12
       - run: npm install -g yarn
+      
       - run: yarn
       - run: yarn export
 
@@ -60,3 +61,4 @@ jobs:
           # Upload files with private ACL, needed for S3 static website hosting
           private: true
                 echo test, and deploy your project.
+
