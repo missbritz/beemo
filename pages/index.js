@@ -3,6 +3,8 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Typewriter from 'typewriter-effect'
 import { AiFillLinkedin, AiOutlineGithub, AiFillInstagram } from "react-icons/ai";
+import withGA from "next-ga";
+import Router from "next/router";
 
 const Emoji = props => (
   <span role="img" aria-label={props.symbol}>{props.symbol}</span>
@@ -16,9 +18,11 @@ const SocialMedia = props => {
    )
 }
 
+const isProductionGA = process.env.GA_ID;
+
 const myConfig = {
-  instagram: 'https://www.linkedin.com/in/brittaoblan',
-  linkedin: 'https://www.instagram.com/missbritz/',
+  linkedin: 'https://www.linkedin.com/in/brittaoblan',
+  instagram: 'https://www.instagram.com/missbritz/',
   github: 'https://github.com/missbritz'
 }
 
@@ -77,4 +81,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default withGA(isProductionGA, Router)(Home)
