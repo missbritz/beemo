@@ -33,11 +33,9 @@ const Home = () => {
   const [next, setNext] = useState(0);
   const facts = [
     "i'm a software engineer",
-    "i run at least 10 miles per week",
+    "i enjoy an active lifestyle - running, swimming, yoga, bodypump",
     "i love music",
     "i turn coffee to codes",
-    "i've been working on a gaming app, wip! yas!",
-    "i do yoga",
     "i'm nothing fancy, just pure awesomeness! :P",
     "i'm a UI designer turned UI Engineer"
   ]
@@ -51,12 +49,12 @@ const Home = () => {
       </Head>
 
       <main className={styles.main}>
-        <img className={styles.pic} src="/assets/britta oblan - software engineer.jpg" alt="Britta Oblan - Software Engineer from PH" width={150} height={150} />
+        <img className={styles.pic} src="/assets/britta oblan - software engineer - PH.jpg" alt="Britta Oblan - Software Engineer from PH" width={150} height={150} />
         <p className={styles.greeting}>hi! <Emoji symbol="👋" /> I'm</p>
         <h1 className={styles.title}>
           <span className={styles.titleBold}>britta oblan</span>
         </h1>
-        <h2 className={styles.titleNonBold}>Software Engineer from PH, living in SG</h2>
+        <h2 className={styles.titleNonBold}>Software Engineer from Philippines <Emoji symbol="🇵🇭" />, living in Singapore<Emoji symbol="🇸🇬" /></h2>
         <hr className={styles.border}/>
         <div className={styles.Typewriter}>
           <Typewriter
