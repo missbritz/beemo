@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import Head from 'next/head'
+'use client'
+import Image from "next/image"
 import styles from '../styles/Home.module.css'
 import Typewriter from 'typewriter-effect'
 import { AiFillLinkedin, AiOutlineGithub, AiFillInstagram } from "react-icons/ai";
 import withGA from "next-ga";
 import Router from "next/router";
 
-const Emoji = props => (
+const Emoji = (props:any) => (
   <span role="img" aria-label={props.symbol}>{props.symbol}</span>
 );
 
-const SocialMedia = props => {
-   return (
+const SocialMedia = (props:any) => {
+    return (
     <a href={props.link} target="_blank">
       {props.children}
     </a>
-   )
+    )
 }
 
 const isProductionGA = process.env.GA_ID;
@@ -26,16 +26,11 @@ const myConfig = {
   github: 'https://github.com/missbritz'
 }
 
-const Home = () => {
-  //Todo:
-  // Will fetch data somewhere else.  Still deciding
-  const [text, setText] = useState('brewing something really exciting');
-  const [next, setNext] = useState(0);
+function Home() {
   const facts = [
-    "i'm a software engineer",
-    "i enjoy an active lifestyle - running, swimming, yoga, bodypump",
+    "i'm a software engineer with interest on everything tech, finance and health",
+    "i enjoy an active lifestyle - strength training and cardio",
     "i love music",
-    "i turn coffee to codes",
     "i'm nothing fancy, just pure awesomeness! :P",
     "i'm a UI designer turned UI Engineer"
   ]
@@ -43,18 +38,13 @@ const Home = () => {
   
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Britta Oblan - Software Engineer from PH</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main className={styles.main}>
         <img className={styles.pic} src="/assets/britta oblan - software engineer - PH.jpg" alt="Britta Oblan - Software Engineer from PH" width={150} height={150} />
         <p className={styles.greeting}>hi! <Emoji symbol="👋" /> I'm</p>
         <h1 className={styles.title}>
           <span className={styles.titleBold}>britta oblan</span>
         </h1>
-        <h2 className={styles.titleNonBold}>Software Engineer from Philippines <Emoji symbol="🇵🇭" />, living in Singapore<Emoji symbol="🇸🇬" /></h2>
+        <h2 className={styles.titleNonBold}>Software Engineer <br/>from Philippines <Emoji symbol="🇵🇭" />, living in Singapore<Emoji symbol="🇸🇬" /></h2>
         <hr className={styles.border}/>
         <div className={styles.Typewriter}>
           <Typewriter
@@ -68,7 +58,7 @@ const Home = () => {
         </div>
         <hr className={styles.border}/>
         <div className={styles.socialContainer}>
-        <span>Follow me on </span>
+          <span>Follow me on </span>
           <div className={styles.social}>
             <SocialMedia link={myConfig.linkedin}><AiFillLinkedin size="1.5em" className={styles.icons}/></SocialMedia> 
             <SocialMedia link={myConfig.github}><AiOutlineGithub size="1.5em" className={styles.icons}/></SocialMedia> <SocialMedia link={myConfig.instagram}><AiFillInstagram size="1.5em" className={styles.icons}/></SocialMedia>
@@ -79,4 +69,4 @@ const Home = () => {
   )
 }
 
-export default withGA(isProductionGA, Router)(Home)
+export default withGA(isProductionGA, Router)(Home)    
