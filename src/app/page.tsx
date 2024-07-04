@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image"
-import styles from './Home.module.css'
+import styles from './home.module.css'
 import Typewriter from 'typewriter-effect'
 import { AiFillLinkedin, AiOutlineGithub, AiFillInstagram } from "react-icons/ai";
 
