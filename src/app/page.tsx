@@ -1,10 +1,8 @@
 'use client'
 import Image from "next/image"
-import styles from '../styles/Home.module.css'
+import styles from './Home.module.css'
 import Typewriter from 'typewriter-effect'
 import { AiFillLinkedin, AiOutlineGithub, AiFillInstagram } from "react-icons/ai";
-import withGA from "next-ga";
-import Router from "next/router";
 
 const Emoji = (props:any) => (
   <span role="img" aria-label={props.symbol}>{props.symbol}</span>
@@ -17,8 +15,6 @@ const SocialMedia = (props:any) => {
     </a>
     )
 }
-
-const isProductionGA = process.env.GA_ID;
 
 const myConfig = {
   linkedin: 'https://www.linkedin.com/in/brittaoblan',
@@ -39,7 +35,16 @@ function Home() {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <img className={styles.pic} src="/assets/britta oblan - software engineer - PH.jpg" alt="Britta Oblan - Software Engineer from PH" width={150} height={150} />
+        <Image
+          src="/assets/britta oblan - software engineer - PH.jpg"
+          width={150}
+          height={150}
+          alt="Britta Oblan - Software Engineer from PH"
+          style={{
+            borderRadius: '100px',
+            border: '5px solid #ffffff'
+          }}
+        />
         <p className={styles.greeting}>hi! <Emoji symbol="👋" /> I'm</p>
         <h1 className={styles.title}>
           <span className={styles.titleBold}>britta oblan</span>
@@ -51,7 +56,6 @@ function Home() {
             options={{
               strings: facts,
               autoStart: true,
-              pauseFor: 2500,
               loop: true
             }}
           />
@@ -69,4 +73,4 @@ function Home() {
   )
 }
 
-export default withGA(isProductionGA, Router)(Home)    
+export default Home    
