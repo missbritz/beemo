@@ -1,8 +1,11 @@
-'use client'
 import Image from "next/image"
 import styles from './home.module.css'
 import { AiFillLinkedin, AiOutlineGithub, AiFillInstagram } from "react-icons/ai";
-
+import BodyComponent from "../components/body";
+import client from "../utils/apolloClient";
+import { gql } from "@apollo/client";
+import ProfileComponent from "@/components/profile";
+import ConnectComponent from "@/components/connect";
 
 const SocialMedia = (props:any) => {
     return (
@@ -18,7 +21,48 @@ const myConfig = {
   github: 'https://github.com/missbritz'
 }
 
-function Home() {
+async function Home() {
+
+  const posts = await client.query({
+    query: gql`
+        query{
+            posts {
+                data {
+                    id
+                    attributes {
+                        Title
+                        Published
+                        Content
+                        Category
+                        Summary
+                    }
+                }
+            }
+        }
+    `,
+  })
+
+  const profile = await client.query({
+    query: gql`
+        query{
+          myProfile {
+            data {
+              id
+              attributes {
+                MainTitle
+                MyIntro
+                SocialMediaLinks {
+                  Label
+                  Icon
+                  Url
+                }
+              }
+            }
+          }
+        }
+    `,
+  })
+
   return (
     <div className="px-8 flex flex-col justify-center items-center bg-neutral-200 min-h-screen">
       <main className="max-w-4xl md:w-6/12 sm:w-full">
@@ -28,103 +72,34 @@ function Home() {
                 <h1 className={`${styles.headerTitle} text-black font-bold`}>britta oblan</h1>
               </div>
               <div className="flex flex-row basis-1/4 justify-end align-middle items-center">
-                <SocialMedia link={myConfig.linkedin}><AiFillLinkedin size="1.7em" className="p-0.5 text-neutral-400"/></SocialMedia> 
-                <SocialMedia link={myConfig.github}><AiOutlineGithub size="1.7em" className="p-0.5 text-neutral-400"/></SocialMedia>
-                <SocialMedia link={myConfig.instagram}><AiFillInstagram size="1.7em" className="p-0.5 text-neutral-400"/></SocialMedia>
-              </div>
+                <SocialMedia link={myConfig.linkedin}><AiFillLinkedin size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/></SocialMedia> 
+                <SocialMedia link={myConfig.github}><AiOutlineGithub size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/></SocialMedia>
+                <SocialMedia link={myConfig.instagram}><AiFillInstagram size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/></SocialMedia>              </div>
             </div>
+            <hr className={`${styles.border}`}/>
           </header>
           <section id="scroll-container" className="w-full overflow-y-auto h-[calc(100vh-14rem)] pb-8 scroll-smooth">
-            <div id="about"></div>
-            <hr className={`${styles.border} my-8`}/>
-            <div className="flex flex-row">
-              <div className="basis-3/4">
-                <h2 className="text-neutral-400 font-bold text-3xl">about</h2>
-                <p className="text-neutral-600 text-sm">I am an Application Developer from Cebu, Philippines, living in Singapore.</p>
-              </div>
-              <div className="flex flex-row basis-1/4 justify-end align-middle items-center">
-                <Image
-                  src="/assets/britta oblan - software engineer - PH.jpg"
-                  width={100}
-                  height={100}
-                  alt="Britta Oblan - Software Engineer from PH"
-                  style={{
-                    borderRadius: '50px',
-                    border: '1px solid #ffffff',
-                    margin: '20px 0 20px 20px',
-                    justifyContent: 'flex-end'
-                  }}
-                />
-              </div>
-            </div>
+            <div id="about" className="pt-8"></div>
+            {profile?.data?.myProfile?.data && <ProfileComponent profile={profile.data.myProfile.data}/>}
             <div id="talk">
               <hr className={`${styles.border} my-8`}/>
               <h2 className="text-neutral-400 font-bold text-3xl">let's talk</h2>
-              <div className="py-8">
-                <article className="flex max-w-xl flex-col items-start justify-between">
-                  <div className="flex items-center gap-x-4 text-xs">
-                    <time datetime="2020-03-16" className="text-gray-500">Mar 16, 2020</time>
-                    <a href="#" className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
-                  </div>
-                  <div className="group relative">
-                    <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                      <a href="#">
-                        <span className="absolute inset-0"></span>
-                        Boost your conversion rate
-                      </a>
-                    </h3>
-                    <p className="mt-5 line-clamp-3 text-sm leading-6 text-neutral-600">Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.</p>
-                  </div>
-                  </article>
-              </div>
-              <div className="py-8">
-                <article className="flex max-w-xl flex-col items-start justify-between">
-                  <div className="flex items-center gap-x-4 text-xs">
-                    <time datetime="2020-03-16" className="text-gray-500">Mar 16, 2020</time>
-                    <a href="#" className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
-                  </div>
-                  <div className="group relative">
-                    <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                      <a href="#">
-                        <span className="absolute inset-0"></span>
-                        Boost your conversion rate
-                      </a>
-                    </h3>
-                    <p className="mt-5 line-clamp-3 text-sm leading-6 text-neutral-600">Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.</p>
-                  </div>
-                  </article>
-              </div>
-              <div className="py-8">
-                <article className="flex max-w-xl flex-col items-start justify-between">
-                  <div className="flex items-center gap-x-4 text-xs">
-                    <time datetime="2020-03-16" className="text-gray-500">Mar 16, 2020</time>
-                    <a href="#" className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
-                  </div>
-                  <div className="group relative">
-                    <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                      <a href="#">
-                        <span className="absolute inset-0"></span>
-                        Boost your conversion rate
-                      </a>
-                    </h3>
-                    <p className="mt-5 line-clamp-3 text-sm leading-6 text-neutral-600">Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.</p>
-                  </div>
-                  </article>
-              </div>
+              {posts?.data?.posts?.data && <BodyComponent posts={posts?.data?.posts?.data}/>}
             </div>
             <div id="connect">
               <hr className={`${styles.border} my-8`}/>
               <h2 className="text-neutral-400 font-bold text-3xl">let's connect</h2>
               <div className="flex flex-row basis-1/3 justify-start align-middle items-center">
-                <SocialMedia link={myConfig.linkedin}><AiFillLinkedin size="1.7em" className="p-0.5 text-neutral-400"/></SocialMedia> 
-                <SocialMedia link={myConfig.github}><AiOutlineGithub size="1.7em" className="p-0.5 text-neutral-400"/></SocialMedia>
-                <SocialMedia link={myConfig.instagram}><AiFillInstagram size="1.7em" className="p-0.5 text-neutral-400"/></SocialMedia>
+                <SocialMedia link={myConfig.linkedin}><AiFillLinkedin size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/></SocialMedia> 
+                <SocialMedia link={myConfig.github}><AiOutlineGithub size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/></SocialMedia>
+                <SocialMedia link={myConfig.instagram}><AiFillInstagram size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/></SocialMedia>
               </div>
             </div>
+            {profile?.data?.myProfile?.data?.attributes?.social && <ConnectComponent social={profile?.data?.myProfile?.data?.attributes?.social}></ConnectComponent>}
           </section>
-          <footer className="w-full sticky mb-8">
+          <footer className="w-full sticky">
             <hr className={`${styles.border} mb-8`}/>
-            <p className="text-black"><a href="#about">about</a> | <a href="#talk">let's talk</a> | <a href="#connect">let's connect</a></p>
+            <p className="text-neutral-400"><a href="#about" className="hover:text-black focus:text-black">about</a> | <a href="#talk" className="hover:text-black focus:text-black">let's talk</a> | <a href="#connect" className="hover:text-black focus:text-black">let's connect</a></p>
           </footer>
       </main>
     </div>
