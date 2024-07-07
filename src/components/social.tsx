@@ -1,7 +1,6 @@
 import { AiFillLinkedin, AiOutlineGithub, AiFillInstagram } from "react-icons/ai";
 
-const SocialIcons = ({ social }: any) => {
-
+const SocialIconComponent = ({ social }: any) => {
     const SocialMedia = (props:any) => {
         return (
         <a href={props.link} target="_blank">
@@ -10,7 +9,7 @@ const SocialIcons = ({ social }: any) => {
         )
     }
 
-    const GetIcon = (icon: any) => {
+    const GetIcon = ({ icon }: any) => {
         switch (icon) {
             case 'LinkedIn':
                 return <AiFillLinkedin size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
@@ -23,9 +22,9 @@ const SocialIcons = ({ social }: any) => {
 
     return (
         social.length && social.map((icon:any) => {
-            return <SocialMedia link={icon.url}><GetIcon icon={icon.icon}/></SocialMedia> 
+            return <SocialMedia link={icon.Url}><GetIcon icon={icon.Label}/></SocialMedia> 
         })
     )
 }
 
-export default SocialIcons
+export default SocialIconComponent

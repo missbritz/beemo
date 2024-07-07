@@ -1,11 +1,11 @@
 import Image from "next/image"
+import RichTextBlockRenderer from "./block-renderer"
 
 const ProfileComponent = ({ profile } : any) => {
-    console.log(profile)
     return (
         <div className="flex flex-row">
             <div className="basis-3/4">
-                <p className="text-neutral-600 text-sm">Hi!  I'm Britta Oblan, I am an Application Developer from Cebu, Philippines, living in Singapore specialising in Front End Technology.  I am UI/UX designer turned developer and working my way to be a Fullstack Developer. I like everything tech, finance, health and fitness.</p>
+                <RichTextBlockRenderer content={profile.attributes.MyIntro} />
             </div>
             <div className="flex flex-row basis-1/4 justify-end align-middle items-center">
                 <Image
