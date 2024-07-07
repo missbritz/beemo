@@ -7,21 +7,21 @@ const ToolkitComponent = ({ icons }: any) => {
     const GetIcon = ({ icon }: any) => {
         switch (icon) {
             case 'Railway':
-                return <SiRailway size="2em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
+                return <SiRailway size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
             case 'Github':
-                return <FaGithub size="2em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
+                return <FaGithub size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
             case 'AWS':
-                return <FaAws size="2em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
+                return <FaAws size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
             case 'Apollo':
-                return <SiApollographql size="2em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
+                return <SiApollographql size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
             case 'GraphQL':
-                return <SiGraphql size="2em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
+                return <SiGraphql size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
             case 'NextJs':
-                return <RiNextjsFill size="2em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
+                return <RiNextjsFill size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
             case 'Strapi':
-                return <SiStrapi size="2em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
+                return <SiStrapi size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
             case 'TailwindCSS':
-                return <RiTailwindCssFill size="2em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
+                return <RiTailwindCssFill size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
         }
     }
     return (

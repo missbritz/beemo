@@ -6,7 +6,7 @@ const BodyComponent = ({ posts }: any) => {
     return (
         posts.length ? posts.map((post:any) => {
             return (
-                <div className="py-8">
+                <div className="py-10">
                     <article className="flex max-w-xl flex-col items-start justify-between">
                     <div className="flex items-center gap-x-4 text-xs">
                         <time datetime="2020-03-16" className="text-gray-500">{post.attributes.Published}</time>
