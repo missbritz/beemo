@@ -65,13 +65,13 @@ async function Home({ children } : any) {
             <div id="talk">
               {children}
               <hr className={`${styles.border} my-8`}/>
-              <h2 className="text-neutral-400 font-bold text-3xl">let's talk</h2>
+              <h2 className="text-neutral-900 font-bold text-3xl">let's talk</h2>
               {posts?.data?.posts?.data && <BodyComponent posts={posts?.data?.posts?.data}/>}
             </div>
             {profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks && <ConnectComponent social={profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks}></ConnectComponent>}
               <div id="toolkit" className="pt-8">
               <hr className={`${styles.border} my-8`}/>
-              <h2 className="text-neutral-400 font-bold text-3xl">the toolkit</h2>
+              <h2 className="text-neutral-900 font-bold text-3xl">the toolkit</h2>
               <p className="text-neutral-600 max-w-prose my-2 text-sm">Built with these swags </p>
               {profile?.data?.myProfile?.data?.attributes?.KitIcons && <ToolkitComponent icons={profile?.data?.myProfile?.data?.attributes?.KitIcons}></ToolkitComponent>}
             </div>

@@ -1,16 +1,16 @@
-import { sanitizeUrl } from "@/utils/sanitize-url"
 import Emoji from "./emoji"
 import Link from "next/link"
 
 const BodyComponent = ({ posts }: any) => {
     return (
         posts.length ? posts.map((post:any) => {
+            {console.log(post)}
             return (
                 <div className="py-10">
-                    <article className="flex max-w-xl flex-col items-start justify-between">
+                    <article className="flex flex-col items-start justify-between">
                     <div className="flex items-center gap-x-4 text-xs">
                         <time datetime="2020-03-16" className="text-gray-500">{post.attributes.Published}</time>
-                        <a href="#" className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{post.attributes.Category}</a>
+                        <Link href={`/category/${post.attributes.Category}`} className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{post.attributes.Category}</Link>
                     </div>
                     <div className="group relative">
                         <h3 className="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
