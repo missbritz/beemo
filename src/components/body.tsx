@@ -9,7 +9,7 @@ const BodyComponent = ({ posts }: any) => {
                 <div className="py-10">
                     <article className="flex flex-col items-start justify-between">
                     <div className="flex items-center gap-x-4 text-xs">
-                        <time datetime="2020-03-16" className="text-gray-500">{post.attributes.Published}</time>
+                        <time dateTime="2020-03-16" className="text-gray-500">{post.attributes.Published}</time>
                         <Link href={`/category/${post.attributes.Category}`} className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{post.attributes.Category}</Link>
                     </div>
                     <div className="group relative">
