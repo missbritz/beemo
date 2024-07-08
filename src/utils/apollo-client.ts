@@ -7,7 +7,7 @@ const client = new ApolloClient({
       query: { fetchPolicy: "no-cache" },
     },
     link: new HttpLink({
-      uri: `${process.env.REACT_APP_BACKEND_URL}/graphql"`
+      uri: `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/graphql"`
     }),
   });
 
