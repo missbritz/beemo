@@ -59,14 +59,11 @@ async function Home({ children } : any) {
       <main className="max-w-4xl md:w-6/12 sm:w-full">
           {profile?.data?.myProfile?.data?.attributes && <TopBarComponent profile={profile}/>}
           <section id="scroll-container" className="w-full overflow-y-auto h-[calc(100vh-14rem)] pb-8 scroll-smooth">
-            <div id="about" className="pt-8">
-              {profile?.data?.myProfile?.data && <ProfileComponent profile={profile.data.myProfile.data}/>}
-            </div>
-            <div id="talk">
+            <div>
               {children}
               <hr className={`${styles.border} my-8`}/>
-              <h2 className="text-neutral-900 font-bold text-3xl">let's talk</h2>
-              {posts?.data?.posts?.data && <BodyComponent posts={posts?.data?.posts?.data}/>}
+              <h2 className="text-neutral-900 font-bold text-3xl">not found</h2>
+              <p className="text-neutral-600 max-w-prose my-2 text-sm">Oops! Looks like you took a wrong turn.</p>
             </div>
             {profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks && <ConnectComponent social={profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks}></ConnectComponent>}
               <div id="toolkit" className="pt-8">
