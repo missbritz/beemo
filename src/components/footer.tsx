@@ -1,4 +1,4 @@
-import styles from '../app/home.module.css'
+import styles from '../pages/home.module.css'
 
 const FooterComponent = () => {
     return (

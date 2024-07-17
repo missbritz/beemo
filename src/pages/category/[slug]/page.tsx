@@ -6,9 +6,31 @@ import { notFound } from "next/navigation";
 //disable caching
 export const revalidate = 0;
 
-export async function generateStaticParams() {
+// export async function generateStaticParams() {
 
-    const posts = await client.query({
+//     const posts = await client.query({
+//         query: gql`
+//             query{
+//                 posts {
+//                     data {
+//                         id
+//                         attributes {
+//                             Category
+//                         }
+//                     }
+//                 }
+//             }
+//         `
+//     })
+
+//     const allPosts = posts.data.posts.data
+//     return allPosts.length && allPosts.map((post:any) => {
+//        return { slug: post?.attributes?.Category }
+//     })
+// }
+
+export async function getStaticProps() {
+        const posts = await client.query({
         query: gql`
             query{
                 posts {
@@ -30,7 +52,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Category({ params }: any) {
-
+console.log(params)
     if (!params?.slug) notFound();
     
     const getPosts = await client.query({

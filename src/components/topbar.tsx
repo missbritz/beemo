@@ -1,4 +1,4 @@
-import styles from '../app/home.module.css'
+import styles from '../pages/home.module.css'
 import SocialIconComponent from './social'
 
 const TopBarComponent = ({ profile }: { profile: any }) => {

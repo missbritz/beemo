@@ -9,8 +9,30 @@ import Link from "next/link";
 export const revalidate = 0;
 
 
-export async function generateStaticParams() {
+// export async function generateStaticParams() {
 
+//     const posts = await client.query({
+//         query: gql`
+//             query{
+//                 posts {
+//                     data {
+//                         id
+//                         attributes {
+//                             Slug
+//                         }
+//                     }
+//                 }
+//             }
+//         `
+//     })
+
+//     const allPosts = posts.data.posts.data
+//     return allPosts.length && allPosts.map((post:any) => {
+//        return { slug: post?.attributes?.Slug }
+//     })
+// }
+
+export async function getStaticProps() {
     const posts = await client.query({
         query: gql`
             query{
@@ -32,7 +54,9 @@ export async function generateStaticParams() {
     })
 }
 
+
 export default async function Posts({ params }: any) {
+    console.log(params)
 
     if (!params?.slug) notFound();
 
