@@ -1,6 +1,7 @@
 import Emoji from "./emoji"
 import Link from "next/link"
 import styles from "@/app/home.module.css"
+import DateFormatter from "@/utils/date-formatter"
 
 const CategoryPosts = ({ posts }: any) => {
     return (
@@ -9,7 +10,7 @@ const CategoryPosts = ({ posts }: any) => {
                 <div>
                     <article className="flex flex-col items-start justify-between">
                         <div className="flex items-center gap-x-4 text-xs">
-                            <time dateTime="2020-03-16" className="text-gray-500">{post.attributes.Published}</time>
+                            <time dateTime={DateFormatter(post.attributes.Published)} className="text-gray-500">{DateFormatter(post.attributes.Published)}</time>
                         </div>
                         <div className="group relative">
                             <h3 className="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
@@ -26,7 +27,7 @@ const CategoryPosts = ({ posts }: any) => {
             )
         }) : 
         <div className="py-10">
-            <p className="text-center text-neutral-600">stay tuned, we'll be back in a jiffy!<Emoji symbol="☕" /></p>
+            <p className="text-center text-neutral-600">stay tuned, be back in a jiffy!<Emoji symbol="☕" /></p>
         </div>
     )
 }

@@ -1,3 +1,4 @@
+import DateFormatter from "@/utils/date-formatter"
 import Emoji from "./emoji"
 import Link from "next/link"
 
@@ -8,7 +9,7 @@ const BodyComponent = ({ posts }: any) => {
                 <div className="py-10">
                     <article className="flex flex-col items-start justify-between">
                         <div className="flex items-center gap-x-4 text-xs">
-                            <time dateTime="2020-03-16" className="text-gray-500">{post.attributes.Published}</time>
+                            <time dateTime={DateFormatter(post.attributes.Published)} className="text-gray-500">{DateFormatter(post.attributes.Published)}</time>
                             <Link href={`/notes/${post.attributes.Category}`} className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{post.attributes.Category}</Link>
                         </div>
                         <div className="group relative">
@@ -25,7 +26,7 @@ const BodyComponent = ({ posts }: any) => {
             )
         }) : 
         <div className="py-10">
-            <p className="text-center text-neutral-600">stay tuned, we'll be back in a jiffy!<Emoji symbol="☕" /></p>
+            <p className="text-center text-neutral-600">stay tuned, be back in a jiffy!<Emoji symbol="☕" /></p>
         </div>
     )
 }
