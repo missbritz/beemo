@@ -1,6 +1,5 @@
 import Image from "next/image"
 import RichTextBlockRenderer from "./block-renderer"
-import styles from '../app/home.module.css'
 
 const ProfileComponent = ({ profile } : any) => {
     return (

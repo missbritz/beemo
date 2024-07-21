@@ -1,43 +1,22 @@
 import client from "@/utils/apollo-client"
 import { gql } from "@apollo/client"
-import BodyComponent from "@/components/body";
+import CategoryPosts from "@/app/components/category-posts";
 import { notFound } from "next/navigation";
 
 //disable caching
 export const revalidate = 0;
 
-// export async function generateStaticParams() {
+export async function generateStaticParams() {
 
-//     const posts = await client.query({
-//         query: gql`
-//             query{
-//                 posts {
-//                     data {
-//                         id
-//                         attributes {
-//                             Category
-//                         }
-//                     }
-//                 }
-//             }
-//         `
-//     })
-
-//     const allPosts = posts.data.posts.data
-//     return allPosts.length && allPosts.map((post:any) => {
-//        return { slug: post?.attributes?.Category }
-//     })
-// }
-
-export async function getStaticProps() {
-        const posts = await client.query({
+    const posts = await client.query({
         query: gql`
             query{
                 posts {
                     data {
                         id
                         attributes {
-                            Category
+                            Category,
+                            Slug
                         }
                     }
                 }
@@ -47,13 +26,13 @@ export async function getStaticProps() {
 
     const allPosts = posts.data.posts.data
     return allPosts.length && allPosts.map((post:any) => {
-       return { slug: post?.attributes?.Category }
+       return { category: post?.attributes?.Category, slug: post?.attributes?.Slug }
     })
 }
 
 export default async function Category({ params }: any) {
-console.log(params)
-    if (!params?.slug) notFound();
+
+    if (!params?.category) notFound();
     
     const getPosts = await client.query({
         query: gql`
@@ -79,13 +58,13 @@ console.log(params)
     })
 
     const getCurrentCategory = getPosts?.data?.posts?.data?.length ? getPosts?.data?.posts?.data?.filter((node: any) => {
-        return node.attributes.Category === params.slug
+        return node.attributes.Category === params.category
     }) : [];
 
     return (
         <div>
-            <h2 className="text-neutral-900 font-bold text-3xl capitalize">{params.slug}</h2>
-            {getCurrentCategory.length && <BodyComponent posts={getCurrentCategory}/>}
+            <h2 className="text-neutral-900 font-bold text-3xl capitalize pb-5">{params.category}</h2>
+            {getCurrentCategory.length && <CategoryPosts posts={getCurrentCategory}/>}
         </div>
     )
 }

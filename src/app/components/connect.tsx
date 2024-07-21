@@ -1,4 +1,4 @@
-import styles from '../pages/home.module.css'
+import styles from '../home.module.css'
 import Emoji from './emoji';
 import SocialIconComponent from "./social";
 

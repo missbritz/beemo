@@ -1,7 +1,7 @@
-import client from "../../../utils/apollo-client";
+import client from "../../../../utils/apollo-client";
 import { gql } from "@apollo/client";
-import FooterComponent from '@/components/footer';
-import TopBarComponent from '@/components/topbar';
+import FooterComponent from '@/app/components/footer';
+import TopBarComponent from '@/app/components/topbar';
 
 async function SlugLayout({ children } : any) {
 
