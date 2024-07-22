@@ -2,9 +2,6 @@ import client from "@/utils/apollo-client"
 import { gql } from "@apollo/client"
 import BodyComponent from "../components/body";
 
-//disable caching
-export const revalidate = 0;
-
 export default async function Page() {
     
     const getPosts = await client.query({
