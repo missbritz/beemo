@@ -6,9 +6,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import DateFormatter from "@/utils/date-formatter";
 
-//disable caching
-export const revalidate = 0;
-
 
 export async function generateStaticParams() {
 

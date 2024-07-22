@@ -3,9 +3,6 @@ import { gql } from "@apollo/client"
 import CategoryPosts from "@/app/components/category-posts";
 import { notFound } from "next/navigation";
 
-//disable caching
-export const revalidate = 0;
-
 export async function generateStaticParams() {
 
     const posts = await client.query({
