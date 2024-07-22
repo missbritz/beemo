@@ -1,7 +1,7 @@
 import { SiRailway, SiApollographql, SiStrapi, SiGraphql } from "react-icons/si";
 import { FaGithub, FaAws } from "react-icons/fa";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
-import IconButtonComponent from "./icon";
+import IconButtonComponent from "./icon-button";
 
 const ToolkitComponent = ({ icons }: any) => {
     const GetIcon = ({ icon }: any) => {

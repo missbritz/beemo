@@ -1,7 +1,7 @@
-import styles from '../../home.module.css'
-import client from "../../../utils/apollo-client";
+import styles from '../home.module.css'
+import client from "../../utils/apollo-client";
 import { gql } from "@apollo/client";
-import BodyComponent from '@/components/body';
+import BodyComponent from '@/app/components/body';
 
 async function PostNotFound({ children } : any) {
 
@@ -33,7 +33,7 @@ async function PostNotFound({ children } : any) {
       <h2 className="text-neutral-900 font-bold text-3xl">not found</h2>
       <p className="text-neutral-600 max-w-prose my-2 text-sm">Oops! Looks like you took a wrong turn.</p>
       <hr className={`${styles.border} my-8`}/>
-      <BodyComponent posts={getPosts}/>
+      {/* <BodyComponent posts={getPosts}/> */}
     </div>
   )
 }
