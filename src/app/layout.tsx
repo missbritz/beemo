@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={lexend.className}>
+      <body className={`${lexend.className} dark:bg-darkImg dark:bg-transparent `}>
           {children}
       </body>
       <GoogleAnalytics gaId={isProductionGA} />
