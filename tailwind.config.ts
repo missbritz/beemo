@@ -16,12 +16,17 @@ const config: Config = {
         "2xl": "1536px",
       },
     },
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+    colors: {
+      "cblue": {
+        900: "#020617",
+        800: "#1c283b"
       },
+      "cpink": {
+        900: "#9d174d",
+      }
+    },
+    backgroundImage: {
+      darkImg: 'linear-gradient(15deg, rgba(13,17,23,1) 0%, rgba(28,40,59,1) 80%, rgba(157,23,77,1) 100%)',
     },
   },
   plugins: [],

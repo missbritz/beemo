@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styles from '../home.module.css'
 import SocialIconComponent from './social'
+import ThemeToggler from './theme-toggler'
 
 const TopBarComponent = ({ profile }: { profile: any }) => {
     return (
