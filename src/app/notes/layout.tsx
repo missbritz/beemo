@@ -50,7 +50,7 @@ async function SlugLayout({ children } : any) {
   })
 
   return (
-    <div className="px-8 flex flex-col justify-center items-center bg-neutral-200 min-h-screen">
+    <div className="px-8 flex flex-col justify-center items-center min-h-screen">
       <main className="max-w-5xl md:w-7/12 sm:w-full">
           {profile?.data?.myProfile?.data?.attributes && <TopBarComponent profile={profile}/>}
           <section id="scroll-container" className="w-full overflow-y-auto h-[calc(100vh-14rem)] pb-8 scroll-smooth">
