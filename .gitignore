@@ -12,4 +12,6 @@ yarn-error.log*
 # Export
 out/
 # etc
+public/.DS_Store
+src/.DS_Store
 .DS_Store

@@ -8,7 +8,7 @@ const RichTextBlockRenderer = ({ content }: any) => {
       content={content}
       blocks={{
         // You can use the default components to set class names...
-        paragraph: ({ children }) => <p className="text-neutral-700">{children}</p>,
+        paragraph: ({ children }) => <p className="text-gray-500">{children}</p>,
         // ...or point to a design system
         heading: ({ children, level }) => {
           switch (level) {
@@ -25,7 +25,7 @@ const RichTextBlockRenderer = ({ content }: any) => {
             case 6:
               return <h6>{children}</h6>
             default:
-              return <p className="text-neutral-700">{children}</p>
+              return <p className="text-gray-500">{children}</p>
           }
         },
         // For links, you may want to use the component from your router or framework

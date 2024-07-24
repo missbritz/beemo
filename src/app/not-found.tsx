@@ -1,8 +1,5 @@
-import styles from './home.module.css'
-import BodyComponent from "./components/body";
 import client from "../utils/apollo-client";
 import { gql } from "@apollo/client";
-import ProfileComponent from "@/app/components/profile";
 import ConnectComponent from "@/app/components/connect";
 import ToolkitComponent from '@/app/components/toolkit';
 import FooterComponent from '@/app/components/footer';
@@ -61,15 +58,15 @@ async function Home({ children } : any) {
           <section id="scroll-container" className="w-full overflow-y-auto h-[calc(100vh-14rem)] pb-8 scroll-smooth">
             <div>
               {children}
-              <hr className={`${styles.border} my-8`}/>
-              <h2 className="text-neutral-900 font-bold text-3xl">not found</h2>
-              <p className="text-neutral-600 max-w-prose my-2 text-sm">Oops! Looks like you took a wrong turn.</p>
+              <hr className="my-8 border-b border-solid border-slate-800"/>
+              <h2 className="text-gray-500 font-bold text-3xl">not found</h2>
+              <p className="text-gray-500 max-w-prose my-2 text-sm">Oops! Looks like you took a wrong turn.</p>
             </div>
             {profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks && <ConnectComponent social={profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks}></ConnectComponent>}
               <div id="toolkit" className="pt-8">
-              <hr className={`${styles.border} my-8`}/>
-              <h2 className="text-neutral-900 font-bold text-3xl">the toolkit</h2>
-              <p className="text-neutral-600 max-w-prose my-2 text-sm">Built with these swags </p>
+              <hr className="my-8 border-b border-solid border-slate-800"/>
+              <h2 className="text-gray-500 font-bold text-3xl">the toolkit</h2>
+              <p className="text-gray-500 max-w-prose my-2 text-sm">Built with these swags </p>
               {profile?.data?.myProfile?.data?.attributes?.KitIcons && <ToolkitComponent icons={profile?.data?.myProfile?.data?.attributes?.KitIcons}></ToolkitComponent>}
             </div>
           </section>
