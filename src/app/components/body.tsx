@@ -3,7 +3,7 @@ import Emoji from "./emoji"
 import Link from "next/link"
 
 const BodyComponent = ({ posts, noReadMoreBtn }: any) => {
-{console.log(noReadMoreBtn)}
+
     const AllPosts = () => {
         return posts.length ? posts.map((post:any) => {
             return (
