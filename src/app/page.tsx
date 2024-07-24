@@ -64,7 +64,7 @@ async function Home({ children } : any) {
               {children}
               <hr className="my-8 border-b border-solid border-slate-800"/>
               <h2 className="text-cpink-900 font-bold text-3xl">let's talk</h2>
-              {posts?.data?.posts?.data && <BodyComponent posts={posts?.data?.posts?.data}/>}
+              {posts?.data?.posts?.data && <BodyComponent posts={posts?.data?.posts?.data} noReadMoreBtn={false}/>}
             </div>
             {profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks && <ConnectComponent social={profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks}></ConnectComponent>}
               <div id="toolkit" className="pt-8">
