@@ -32,7 +32,7 @@ export default async function Page() {
     return (
         <div>
             <h2 className="text-gray-500 font-bold text-3xl capitalize pb-5">Notes</h2>
-            {allPosts.length && <BodyComponent posts={allPosts}/>}
+            {allPosts.length && <BodyComponent posts={allPosts} noReadMoreBtn={true}/>}
         </div>
     )
 }

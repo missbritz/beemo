@@ -2,8 +2,8 @@ import DateFormatter from "@/utils/date-formatter"
 import Emoji from "./emoji"
 import Link from "next/link"
 
-const BodyComponent = ({ posts }: any) => {
-
+const BodyComponent = ({ posts, noReadMoreBtn }: any) => {
+{console.log(noReadMoreBtn)}
     const AllPosts = () => {
         return posts.length ? posts.map((post:any) => {
             return (
@@ -45,7 +45,7 @@ const BodyComponent = ({ posts }: any) => {
     return (
         <>
             <AllPosts />
-            <GoToNotes/>
+            {!noReadMoreBtn && <GoToNotes/>}
         </>
     )
 }
