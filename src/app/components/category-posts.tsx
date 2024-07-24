@@ -1,6 +1,5 @@
 import Emoji from "./emoji"
 import Link from "next/link"
-import styles from "@/app/home.module.css"
 import DateFormatter from "@/utils/date-formatter"
 
 const CategoryPosts = ({ posts }: any) => {
@@ -13,21 +12,21 @@ const CategoryPosts = ({ posts }: any) => {
                             <time dateTime={DateFormatter(post.attributes.Published)} className="text-gray-500">{DateFormatter(post.attributes.Published)}</time>
                         </div>
                         <div className="group relative">
-                            <h3 className="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                            <h3 className="mt-3 text-2xl font-semibold leading-6 text-pink-800 group-hover:text-pink-500">
                             <Link href={`/notes/${post.attributes.Category}/${post.attributes.Slug}`}>
                                 <span className="absolute inset-0"></span>
                                 {post.attributes.Title}
                             </Link>
                             </h3>
-                            <p className="mt-5 line-clamp-3 leading-6 text-neutral-600">{post.attributes.Summary}</p>
+                            <p className="mt-5 line-clamp-3 leading-6 text-gray-500">{post.attributes.Summary}</p>
                         </div>
-                        <hr className={`${styles.border} my-8`}/>
+                        <hr className="my-8 border-b border-solid border-slate-800"/>
                     </article>
                 </div>
             )
         }) : 
         <div className="py-10">
-            <p className="text-center text-neutral-600">stay tuned, be back in a jiffy!<Emoji symbol="☕" /></p>
+            <p className="text-center text-gray-500">stay tuned, be back in a jiffy!<Emoji symbol="☕" /></p>
         </div>
     )
 }

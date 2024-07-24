@@ -1,7 +1,5 @@
 import Link from 'next/link'
-import styles from '../home.module.css'
 import SocialIconComponent from './social'
-import ThemeToggler from './theme-toggler'
 
 const TopBarComponent = ({ profile }: { profile: any }) => {
     return (
@@ -9,14 +7,14 @@ const TopBarComponent = ({ profile }: { profile: any }) => {
             <div className="flex flex-row">
             <div className="basis-3/4">
                 <Link href="/">
-                {profile?.data?.myProfile?.data?.attributes?.MainTitle && <h1 className={`${styles.headerTitle} text-black font-bold`}>{profile?.data?.myProfile?.data?.attributes?.MainTitle}</h1>}
+                {profile?.data?.myProfile?.data?.attributes?.MainTitle && <h1 className="font-bold text-cpink-900 md:text-8xl text-5xl">{profile?.data?.myProfile?.data?.attributes?.MainTitle}</h1>}
                 </Link>
             </div>
             <div className="flex flex-row basis-1/4 justify-end align-middle items-center">
                 {profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks && <SocialIconComponent social={profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks} />}
             </div> 
             </div>
-            <hr className={`${styles.border}`}/>
+            <hr className="border-b border-solid border-slate-800"/>
         </header>
     )
 }

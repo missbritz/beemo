@@ -1,10 +1,8 @@
-import styles from '../home.module.css'
-
 const FooterComponent = () => {
     return (
         <footer className="w-full sticky">
-            <hr className={`${styles.border} mb-8`}/>
-            <p className="text-neutral-400"><a href={`${process.env.APP_BASE_URL}#about`} className="hover:text-black focus:text-black">about</a> | <a href={`${process.env.APP_BASE_URL}#talk`} className="hover:text-black focus:text-black">let's talk</a> | <a href={`${process.env.APP_BASE_URL}#connect`} className="hover:text-black focus:text-black">let's connect</a> | <a href={`${process.env.APP_BASE_URL}#toolkit`} className="hover:text-black focus:text-black">the toolkit</a></p>
+            <hr className="mb-8 border-b border-solid border-slate-800"/>
+            <p className="text-gray-500"><a href={`${process.env.APP_BASE_URL}#about`} className="hover:text-pink-500 focus:text-pink-500">about</a> | <a href={`${process.env.APP_BASE_URL}#talk`} className="hover:text-pink-500 focus:text-pink-500">let's talk</a> | <a href={`${process.env.APP_BASE_URL}#connect`} className="hover:text-pink-500 focus:text-pink-500">let's connect</a> | <a href={`${process.env.APP_BASE_URL}#toolkit`} className="hover:text-pink-500 focus:text-pink-500">the toolkit</a></p>
         </footer>
     )
 }
