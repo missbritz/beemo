@@ -7,10 +7,10 @@ const BodyComponent = ({ posts, noReadMoreBtn }: any) => {
     const AllPosts = () => {
         return posts.length ? posts.map((post:any) => {
             return (
-                <div className="py-10">
+                <div className="first:pt-0 pb-10 pt-5">
                     <article className="flex flex-col items-start justify-between">
                         <div className="flex items-center gap-x-4 text-xs">
-                            <time dateTime={DateFormatter(post.attributes.Published)} className="text-gray-500">{DateFormatter(post.attributes.Published)}</time>
+                            <time dateTime={DateFormatter(post.attributes.Published)} className="text-gray-400">{DateFormatter(post.attributes.Published)}</time>
                             <Link href={`/notes/${post.attributes.Category}`} className="relative z-10 rounded-full bg-slate-900 px-3 py-1.5 font-medium text-gray-600 hover:text-pink-500">{post.attributes.Category}</Link>
                         </div>
                         <div className="group relative">
@@ -20,21 +20,21 @@ const BodyComponent = ({ posts, noReadMoreBtn }: any) => {
                                 {post.attributes.Title}
                             </Link>
                             </h3>
-                            <p className="mt-5 line-clamp-3 leading-6 text-gray-500">{post.attributes.Summary}</p>
+                            <p className="mt-5 line-clamp-3 leading-6 text-gray-400">{post.attributes.Summary}</p>
                         </div>
                     </article>
                 </div>
             )
         }) : 
         <div className="py-10">
-            <p className="text-center text-gray-500">stay tuned, be back in a jiffy!<Emoji symbol="☕" /></p>
+            <p className="text-center text-gray-400">stay tuned, be back in a jiffy!<Emoji symbol="☕" /></p>
         </div>
     }
 
     const GoToNotes = () => {
         return (
             <Link href="/notes" className="my-4 relative inline-flex items-center justify-center rounded-md p-0.5 mb-2 me-2 overflow-hidden bg-cpink-900 group-hover:bg-opacity-0">
-                <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-cblue-800 rounded-md group-hover:bg-opacity-0">
+                <span className="relative px-5 py-2.5 transition-all ease-in duration-75 text-gray-400 bg-cblue-800 rounded-md group-hover:bg-opacity-0">
                     Read more
                 </span>
             </Link>

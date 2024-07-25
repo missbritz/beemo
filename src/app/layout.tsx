@@ -4,10 +4,10 @@ import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google'
 const figtree = Figtree({ subsets: ["latin"] });
 
-// export const metadata: Metadata = {
-//   title: "Britta Oblan",
-//   description: "Software Engineer from Philippines, living in Singapore",
-// };
+export const metadata: Metadata = {
+  title: "Britta Oblan",
+  description: "Software Engineer from Philippines, living in Singapore",
+};
 
 const isProductionGA = process.env.GA_ID || '';
 
