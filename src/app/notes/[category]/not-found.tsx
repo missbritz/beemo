@@ -31,7 +31,7 @@ async function PostNotFound({ children } : any) {
   return (
     <div className="px-8 flex flex-col justify-center items-center">
       <BackButton>{`< back`}</BackButton>
-      <h2 className="text-cpink-900 font-bold text-3xl md:text-4xl">Not found</h2>
+      <h2 className="text-cpink-900 font-bold text-3xl md:text-5xl">Not found</h2>
       <p className="text-gray-400 max-w-prose my-2 text-sm">Oops! Looks like you took a wrong turn.</p>
       <hr className="my-8 border-b border-solid border-slate-800"/>
       <BodyComponent posts={getPosts}/>

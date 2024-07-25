@@ -62,7 +62,7 @@ export default async function Category({ params }: any) {
     return (
         <div>
             <BackButton>{`< back`}</BackButton>
-            <h2 className="text-cpink-900 font-bold text-3xl md:text-4xl capitalize pb-5">{params.category}</h2>
+            <h2 className="text-cpink-900 font-bold text-3xl md:text-5xl capitalize pb-5">{params.category}</h2>
             {getCurrentCategory.length && <CategoryPosts posts={getCurrentCategory}/>}
         </div>
     )
