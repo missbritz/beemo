@@ -1,6 +1,7 @@
 import client from "@/utils/apollo-client"
 import { gql } from "@apollo/client"
 import BodyComponent from "../components/body";
+import BackButton from "../components/back-button";
 
 export default async function Page() {
     
@@ -31,7 +32,8 @@ export default async function Page() {
 
     return (
         <div>
-            <h2 className="text-gray-400 font-bold text-3xl md:text-4xl capitalize pb-5">Notes</h2>
+            <BackButton>{`< back`}</BackButton>
+            <h2 className="text-cpink-900 font-bold text-3xl md:text-4xl capitalize pb-5">Notes</h2>
             {allPosts.length && <BodyComponent posts={allPosts} noReadMoreBtn={true}/>}
         </div>
     )
