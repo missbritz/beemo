@@ -55,10 +55,6 @@ export default async function Page() {
   })
 
   return (
-    // bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%
-    // bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%
-    // bg-gradient-to-r from-cblue-900 from-0% via-cblue-800 via-80% to-cpink-900 to-100%
-    // bg-gradient-to-r from-neutral-200 from-0% via-neutral-100 via-80% to-neutral-50 to-100%
     <div className="px-8 flex flex-col justify-center items-center bg-neutral-200 min-h-screen">
       <main className="max-w-4xl md:w-6/12 sm:w-full">
           {profile?.data?.myProfile?.data?.attributes && <TopBarComponent profile={profile}/>}
@@ -68,14 +64,14 @@ export default async function Page() {
             </div>
             <div id="talk">
               <hr className="my-8 border-b border-solid border-slate-800"/>
-              <h2 className="text-gray-500 font-bold text-3xl">let's talk</h2>
+              <h2 className="text-gray-400 font-bold text-3xl md:text-4xl">let's talk</h2>
               {posts?.data?.posts?.data && <BodyComponent posts={posts?.data?.posts?.data}/>}
             </div>
             {profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks && <ConnectComponent social={profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks}></ConnectComponent>}
               <div id="toolkit" className="pt-8">
               <hr className="my-8 border-b border-solid border-slate-800"/>
-              <h2 className="text-gray-500 font-bold text-3xl">the toolkit</h2>
-              <p className="text-gray-500 max-w-prose my-2 text-sm">Built with these swags </p>
+              <h2 className="text-gray-400 font-bold text-3xl md:text-4xl">the toolkit</h2>
+              <p className="text-gray-400 max-w-prose my-2 text-sm">Built with these swags </p>
               {profile?.data?.myProfile?.data?.attributes?.KitIcons && <ToolkitComponent icons={profile?.data?.myProfile?.data?.attributes?.KitIcons}></ToolkitComponent>}
             </div>
           </section>

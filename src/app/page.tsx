@@ -63,14 +63,14 @@ async function Home({ children } : any) {
             <div id="talk">
               {children}
               <hr className="my-8 border-b border-solid border-slate-800"/>
-              <h2 className="text-cpink-900 font-bold text-3xl">let's talk</h2>
+              <h2 className="text-cpink-900 font-bold text-3xl md:text-4xl">let's talk</h2>
               {posts?.data?.posts?.data && <BodyComponent posts={posts?.data?.posts?.data} noReadMoreBtn={false}/>}
             </div>
             {profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks && <ConnectComponent social={profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks}></ConnectComponent>}
               <div id="toolkit" className="pt-8">
               <hr className="my-8 border-b border-solid border-slate-800"/>
-              <h2 className="text-cpink-900 font-bold text-3xl">the toolkit</h2>
-              <p className="text-gray-500 max-w-prose my-2 text-sm">Built with these swags</p>
+              <h2 className="text-cpink-900 font-bold text-3xl md:text-4xl">the toolkit</h2>
+              <p className="text-gray-400 max-w-prose my-2 text-sm">Built with these swags</p>
               {profile?.data?.myProfile?.data?.attributes?.KitIcons && <ToolkitComponent icons={profile?.data?.myProfile?.data?.attributes?.KitIcons}></ToolkitComponent>}
             </div>
           </section>

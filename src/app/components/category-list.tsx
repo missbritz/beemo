@@ -29,7 +29,7 @@ const CategoryListComponent = ({ posts }: any) => {
             )
         }) : 
         <div className="py-10">
-            <p className="text-center text-gray-500">stay tuned, be back in a jiffy!<Emoji symbol="☕" /></p>
+            <p className="text-center text-gray-400">stay tuned, be back in a jiffy!<Emoji symbol="☕" /></p>
         </div>
     )
 }
