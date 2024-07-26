@@ -71,7 +71,7 @@ export default async function Page({ params }: any) {
                     <time dateTime={DateFormatter(getCurrentPost[0].attributes.Published)} className="text-gray-400 text-sm">{DateFormatter(getCurrentPost[0].attributes.Published)}</time>
                 </div>
                 <div className="group relative w-full">
-                    <h2 className="text-cpink-900 font-bold text-3xl md:text-5xl my-5">
+                    <h2 className="text-cpink-900 font-bold text-2xl md:text-4xl my-5">
                     {getCurrentPost[0].attributes.Title}
                     </h2>
                     <Link href={`/notes/${getCurrentPost[0].attributes.Category}`} className="relative z-10 rounded-full bg-slate-900 px-3 py-1.5 font-medium text-gray-600 hover:text-pink-500 text-sm">{getCurrentPost[0].attributes.Category}</Link>
