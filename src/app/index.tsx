@@ -1,5 +1,6 @@
 import Layout from './layout'
-import client from "../utils/apollo-client";
+import styles from './home.module.css'
+import client from "./utils/apollo-client";
 import { gql } from "@apollo/client";
 import ProfileComponent from "@/app/components/profile";
 import ConnectComponent from "@/app/components/connect";
@@ -55,23 +56,23 @@ export default async function Page() {
   })
 
   return (
-    <div className="px-8 flex flex-col justify-center items-center bg-neutral-200 min-h-screen">
-      <main className="max-w-4xl md:w-6/12 sm:w-full">
+    <div className="px-6 md:px-8 flex flex-col justify-center items-center min-h-screen text-slate-500">
+      <main className="max-w-5xl md:w-7/12 sm:w-full">
           {profile?.data?.myProfile?.data?.attributes && <TopBarComponent profile={profile}/>}
-          <section id="scroll-container" className="w-full overflow-y-auto h-[calc(100vh-14rem)] pb-8 scroll-smooth">
+          <section id="scroll-container" className="w-full overflow-y-auto h-[calc(100vh-10rem)] pb-8 scroll-smooth">
             <div id="about" className="pt-8">
               {profile?.data?.myProfile?.data && <ProfileComponent profile={profile.data.myProfile.data}/>}
             </div>
             <div id="talk">
-              <hr className="my-8 border-b border-solid border-slate-800"/>
-              <h2 className="text-gray-400 font-bold text-3xl md:text-5xl">Notes</h2>
+              <hr className={`${styles.border} my-8`}/>
+              <h2 className="text-neutral-900 font-bold text-3xl">let's talk</h2>
               {posts?.data?.posts?.data && <BodyComponent posts={posts?.data?.posts?.data}/>}
             </div>
             {profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks && <ConnectComponent social={profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks}></ConnectComponent>}
               <div id="toolkit" className="pt-8">
-              <hr className="my-8 border-b border-solid border-slate-800"/>
-              <h2 className="text-gray-400 font-bold text-3xl md:text-5xl">The Toolkit</h2>
-              <p className="text-gray-400 max-w-prose my-2 text-sm">Built with these swags </p>
+              <hr className={`${styles.border} my-8`}/>
+              <h2 className="text-neutral-900 font-bold text-3xl">the toolkit</h2>
+              <p className="text-neutral-600 max-w-prose my-2 text-sm">Built with these swags </p>
               {profile?.data?.myProfile?.data?.attributes?.KitIcons && <ToolkitComponent icons={profile?.data?.myProfile?.data?.attributes?.KitIcons}></ToolkitComponent>}
             </div>
           </section>
