@@ -1,32 +1,11 @@
 import client from "@/utils/apollo-client"
-import { gql } from "@apollo/client"
 import BodyComponent from "../components/body";
 import BackButton from "../components/back-button";
+import { getAllPost } from "../queries/posts";
 
 export default async function Page() {
     
-    const getPosts = await client.query({
-        query: gql`
-            query{
-                posts {
-                    data {
-                        id
-                        attributes {
-                            Title
-                            Published
-                            Content
-                            Category
-                            Summary
-                            Slug
-                            MetaTitle
-                            MetaKeywords
-                            MetaDescription
-                        }
-                    }
-                }
-            }
-        `
-    })
+    const getPosts = await client.query({ query: getAllPost })
 
     const allPosts = getPosts?.data?.posts?.data?.length && getPosts?.data?.posts?.data
 
