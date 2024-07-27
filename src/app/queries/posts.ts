@@ -23,7 +23,7 @@ const getPostData = gql`
 
 const getAllPost = gql`
     query{
-        posts {
+        posts (sort: "Published:desc"){
             data {
                 id
                 attributes {
