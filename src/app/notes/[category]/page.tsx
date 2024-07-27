@@ -3,23 +3,12 @@ import { gql } from "@apollo/client"
 import CategoryPosts from "@/app/components/category-posts";
 import { notFound } from "next/navigation";
 import BackButton from "@/app/components/back-button";
+import { getPostCategories, getPostsInCategory } from "@/app/queries/posts";
 
 export async function generateStaticParams() {
 
     const posts = await client.query({
-        query: gql`
-            query{
-                posts {
-                    data {
-                        id
-                        attributes {
-                            Category,
-                            Slug
-                        }
-                    }
-                }
-            }
-        `
+        query: getPostCategories
     })
 
     const allPosts = posts.data.posts.data
@@ -39,31 +28,13 @@ export default async function Category({ params }: any) {
     if (!params?.category) notFound();
     
     const getPosts = await client.query({
-        query: gql`
-            query{
-                posts {
-                    data {
-                        id
-                        attributes {
-                            Title
-                            Published
-                            Content
-                            Category
-                            Summary
-                            Slug
-                            MetaTitle
-                            MetaKeywords
-                            MetaDescription
-                        }
-                    }
-                }
-            }
-        `
+        query: getPostsInCategory,
+        variables: {
+            category: params.category
+        }
     })
 
-    const getCurrentCategory = getPosts?.data?.posts?.data?.length ? getPosts?.data?.posts?.data?.filter((node: any) => {
-        return node.attributes.Category === params.category
-    }) : [];
+    const getCurrentCategory = getPosts.data.posts.data
 
     return (
         <div>

@@ -23,7 +23,7 @@ const getPostData = gql`
 
 const getAllPost = gql`
     query{
-        posts {
+        posts (sort: "Published:desc"){
             data {
                 id
                 attributes {
@@ -53,8 +53,30 @@ const getPostCategories = gql`
     }
 `
 
+const getPostsInCategory = gql`
+    query ($category: String!){
+        posts (filters: { Category : { eq: $category } }){
+            data {
+                id
+                attributes {
+                    Title
+                    Published
+                    Content
+                    Category
+                    Summary
+                    Slug
+                    MetaTitle
+                    MetaKeywords
+                    MetaDescription
+                }
+            }
+        }
+    }
+`
+
 export {
     getPostCategories,
+    getPostsInCategory,
     getPostData,
     getAllPost
 }
