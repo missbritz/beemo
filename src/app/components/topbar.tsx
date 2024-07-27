@@ -7,7 +7,7 @@ const TopBarComponent = ({ profile }: { profile: any }) => {
             <div className="flex flex-row">
             <div className="basis-3/4">
                 <Link href="/">
-                {profile?.data?.myProfile?.data?.attributes?.MainTitle && <h1 className="font-bold text-cpink-900 md:text-8xl text-5xl mb-4">{profile?.data?.myProfile?.data?.attributes?.MainTitle}</h1>}
+                {profile?.data?.myProfile?.data?.attributes?.MainTitle && <h1 className="mb-4 font-bold text-cpink-900 md:text-8xl text-5xl">{profile?.data?.myProfile?.data?.attributes?.MainTitle}</h1>}
                 </Link>
             </div>
             <div className="flex flex-row basis-1/4 justify-end align-middle items-center">
