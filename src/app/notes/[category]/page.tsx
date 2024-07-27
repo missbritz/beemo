@@ -28,6 +28,12 @@ export async function generateStaticParams() {
     })
 }
 
+export async function generateMetadata({ params }: any) {
+    return {
+      title: `Britta Oblan - Notes - ${params.category}`,
+    }
+}
+
 export default async function Category({ params }: any) {
 
     if (!params?.category) notFound();

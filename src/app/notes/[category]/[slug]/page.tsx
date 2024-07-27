@@ -1,34 +1,31 @@
 import RichTextBlockRenderer from "@/app/components/block-renderer";
 import client from "@/utils/apollo-client"
-import { gql } from "@apollo/client"
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import DateFormatter from "@/utils/date-formatter";
 import BackButton from "@/app/components/back-button";
+import { getPostData, getPostCategories } from '@/app/queries/posts'
 
-
-export async function generateStaticParams() {
+export async function generateStaticParams({params}: any) {
+console.log(params)
 
     const posts = await client.query({
-        query: gql`
-            query{
-                posts {
-                    data {
-                        id
-                        attributes {
-                            Slug
-                            Category
-                        }
-                    }
-                }
-            }
-        `
+        query: getPostCategories
     })
 
     const allPosts = posts.data.posts.data
     return allPosts.length ? allPosts.map((post:any) => {
-       return { slug: post?.attributes?.Slug, category: post?.attributes?.Category }
+       return { 
+        slug: post?.attributes?.Slug,
+        category: post?.attributes?.Category
+       }
     }) : []
+}
+
+export async function generateMetadata({ params }: any) {
+    return {
+      title: `Britta Oblan - ${params.category}`,
+    }
 }
 
 export default async function Page({ params }: any) {
@@ -36,31 +33,13 @@ export default async function Page({ params }: any) {
     if (!params?.slug) notFound();
 
     const getPosts = await client.query({
-        query: gql`
-            query{
-                posts {
-                    data {
-                        id
-                        attributes {
-                            Title
-                            Published
-                            Content
-                            Category
-                            Summary
-                            Slug
-                            MetaTitle
-                            MetaKeywords
-                            MetaDescription
-                        }
-                    }
-                }
-            }
-        `
+        query: getPostData,
+        variables: {
+            slug: params.slug
+        }
     })
 
-    const getCurrentPost = getPosts?.data?.posts?.data?.length ? getPosts?.data?.posts?.data?.filter((node: any) => {
-        return node.attributes.Slug === params.slug
-    }) : []
+    const getCurrentPost = getPosts.data.posts.data
 
     return (
         <>

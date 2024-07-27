@@ -1,55 +1,20 @@
 import client from "../utils/apollo-client";
-import { gql } from "@apollo/client";
 import ProfileComponent from "@/app/components/profile";
 import ConnectComponent from "@/app/components/connect";
 import ToolkitComponent from '@/app/components/toolkit';
 import FooterComponent from '@/app/components/footer';
 import TopBarComponent from '@/app/components/topbar';
 import BodyComponent from "@/app/components/body";
+import { getMyProfile } from '@/app/queries/my-profile';
+import { getAllPost } from "./queries/posts";
 
-async function Home({ children } : any) {
+async function Home() {
   const posts = await client.query({
-    query: gql`
-        query{
-            posts {
-                data {
-                    id
-                    attributes {
-                        Title
-                        Published
-                        Content
-                        Category
-                        Summary
-                        Slug
-                    }
-                }
-            }
-        }
-    `
+    query: getAllPost
   })
 
   const profile = await client.query({
-    query: gql`
-        query{
-          myProfile {
-            data {
-              id
-              attributes {
-                MainTitle
-                MyIntro
-                SocialMediaLinks {
-                  Label
-                  Url
-                }
-                KitIcons {
-                  Label
-                  Url
-                }
-              }
-            }
-          }
-        }
-    `
+    query: getMyProfile
   })
 
   return (
@@ -61,7 +26,6 @@ async function Home({ children } : any) {
               {profile?.data?.myProfile?.data && <ProfileComponent profile={profile.data.myProfile.data}/>}
             </div>
             <div id="talk">
-              {children}
               <hr className="my-8 border-b border-solid border-slate-800"/>
               <h2 className="text-cpink-900 font-bold text-2xl md:text-4xl">Notes</h2>
               {posts?.data?.posts?.data && <BodyComponent posts={posts?.data?.posts?.data} noReadMoreBtn={false}/>}

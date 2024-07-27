@@ -2,51 +2,12 @@ import client from "../../utils/apollo-client";
 import { gql } from "@apollo/client";
 import FooterComponent from '@/app/components/footer';
 import TopBarComponent from '@/app/components/topbar';
+import { getMyProfile } from "../queries/my-profile";
 
 async function SlugLayout({ children } : any) {
 
-  const posts = await client.query({
-    query: gql`
-        query{
-            posts {
-                data {
-                    id
-                    attributes {
-                        Title
-                        Published
-                        Content
-                        Category
-                        Summary
-                        Slug
-                    }
-                }
-            }
-        }
-    `
-  })
-
   const profile = await client.query({
-    query: gql`
-        query{
-          myProfile {
-            data {
-              id
-              attributes {
-                MainTitle
-                MyIntro
-                SocialMediaLinks {
-                  Label
-                  Url
-                }
-                KitIcons {
-                  Label
-                  Url
-                }
-              }
-            }
-          }
-        }
-    `
+    query: getMyProfile
   })
 
   return (
