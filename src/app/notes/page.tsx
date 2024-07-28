@@ -1,7 +1,7 @@
 import client from "@/utils/apollo-client"
-import BodyComponent from "../components/body";
-import BackButton from "../components/back-button";
-import { getAllPost } from "../queries/posts";
+import BodyComponent from "@/components/body";
+import BackButton from "@/components/back-button";
+import { getAllPost } from "@/queries/posts";
 
 export default async function Page() {
     

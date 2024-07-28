@@ -1,12 +1,12 @@
 import client from "../utils/apollo-client";
-import ProfileComponent from "@/app/components/profile";
-import ConnectComponent from "@/app/components/connect";
-import ToolkitComponent from '@/app/components/toolkit';
-import FooterComponent from '@/app/components/footer';
-import TopBarComponent from '@/app/components/topbar';
-import BodyComponent from "@/app/components/body";
-import { getMyProfile } from '@/app/queries/my-profile';
-import { getAllPost } from "./queries/posts";
+import ProfileComponent from "@/components/profile";
+import ConnectComponent from "@/components/connect";
+import ToolkitComponent from '@/components/toolkit';
+import FooterComponent from '@/components/footer';
+import TopBarComponent from '@/components/topbar';
+import BodyComponent from "@/components/body";
+import { getMyProfile } from '@/queries/my-profile';
+import { getAllPost } from "../queries/posts";
 
 async function Home() {
   const posts = await client.query({

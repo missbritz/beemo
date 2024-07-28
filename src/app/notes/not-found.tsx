@@ -1,6 +1,6 @@
-import BackButton from "../components/back-button";
+import BackButton from "@/components/back-button";
 
-async function PostNotFound() {
+function PostNotFound() {
 
   return (
     <div className="px-8 flex flex-col justify-center items-center">

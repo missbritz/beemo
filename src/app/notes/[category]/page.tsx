@@ -1,9 +1,8 @@
 import client from "@/utils/apollo-client"
-import { gql } from "@apollo/client"
-import CategoryPosts from "@/app/components/category-posts";
+import CategoryPosts from "@/components/category-posts";
 import { notFound } from "next/navigation";
-import BackButton from "@/app/components/back-button";
-import { getPostCategories, getPostsInCategory } from "@/app/queries/posts";
+import BackButton from "@/components/back-button";
+import { getPostCategories, getPostsInCategory } from "@/queries/posts";
 
 export async function generateStaticParams() {
 

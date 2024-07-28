@@ -1,1 +1,0 @@
-export const sanitizeUrl = (url: string) => url.replace(/\s+/g, '-').toLowerCase()

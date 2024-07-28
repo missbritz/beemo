@@ -1,4 +1,4 @@
-import BackButton from "@/app/components/back-button";
+import BackButton from "@/components/back-button";
 
 async function PostNotFound() {
   return (

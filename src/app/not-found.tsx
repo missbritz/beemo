@@ -1,10 +1,10 @@
 import client from "../utils/apollo-client";
-import ConnectComponent from "@/app/components/connect";
-import ToolkitComponent from '@/app/components/toolkit';
-import FooterComponent from '@/app/components/footer';
-import TopBarComponent from '@/app/components/topbar';
-import BackButton from "./components/back-button";
-import { getMyProfile } from '@/app/queries/my-profile';
+import ConnectComponent from "@/components/connect";
+import ToolkitComponent from '@/components/toolkit';
+import FooterComponent from '@/components/footer';
+import TopBarComponent from '@/components/topbar';
+import BackButton from "../components/back-button";
+import { getMyProfile } from '@/queries/my-profile';
 
 async function NotFound() {
 
