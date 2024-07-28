@@ -1,4 +1,4 @@
-import client from "../utils/apollo-client";
+import client from "@/utils/apollo-client";
 import ProfileComponent from "@/components/profile";
 import ConnectComponent from "@/components/connect";
 import ToolkitComponent from '@/components/toolkit';
@@ -27,7 +27,7 @@ async function Home() {
         {posts?.data?.posts?.data && <BodyComponent posts={posts?.data?.posts?.data} noReadMoreBtn={false}/>}
       </div>
       {profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks && <ConnectComponent social={profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks}></ConnectComponent>}
-        <div id="toolkit" className="pt-8">
+        <div id="toolkit">
         <hr className="my-8 border-b border-solid border-slate-800"/>
         <h2 className="text-cpink-900 font-bold text-2xl md:text-4xl">The Toolkit</h2>
         <p className="text-gray-400 max-w-prose my-2 text-sm">Built with these swags</p>

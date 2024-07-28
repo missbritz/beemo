@@ -1,7 +1,6 @@
 import client from "@/utils/apollo-client"
 import CategoryPosts from "@/components/category-posts";
 import { notFound } from "next/navigation";
-import BackButton from "@/components/back-button";
 import { getPostCategories, getPostsInCategory } from "@/queries/posts";
 
 export async function generateStaticParams() {
@@ -24,7 +23,7 @@ export async function generateMetadata({ params }: any) {
 
 export default async function Category({ params }: any) {
 
-    if (!params?.category) notFound();
+    if (!params?.category) console.log('not found')
     
     const getPosts = await client.query({
         query: getPostsInCategory,

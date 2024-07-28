@@ -25,7 +25,7 @@ const ToolkitComponent = ({ icons }: any) => {
         }
     }
     return (
-        <div className="flex flex-row basis-1/3 justify-start align-middle items-center">
+        <div className="flex flex-row basis-1/3 justify-start align-middle items-center pb-10">
             {icons.length && icons.map((icon:any) => {
                 return (
                     <IconButtonComponent link={icon.Url} key={`icon-${icon.Label}`}>
