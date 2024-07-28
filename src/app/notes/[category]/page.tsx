@@ -1,9 +1,8 @@
 import client from "@/utils/apollo-client"
-import { gql } from "@apollo/client"
-import CategoryPosts from "@/app/components/category-posts";
+import CategoryPosts from "@/components/category-posts";
 import { notFound } from "next/navigation";
-import BackButton from "@/app/components/back-button";
-import { getPostCategories, getPostsInCategory } from "@/app/queries/posts";
+import BackButton from "@/components/back-button";
+import { getPostCategories, getPostsInCategory } from "@/queries/posts";
 
 export async function generateStaticParams() {
 
@@ -38,7 +37,6 @@ export default async function Category({ params }: any) {
 
     return (
         <div>
-            <BackButton>{`< back`}</BackButton>
             <h2 className="text-cpink-900 font-bold text-2xl md:text-4xl capitalize pb-5">{params.category}</h2>
             {getCurrentCategory.length && <CategoryPosts posts={getCurrentCategory}/>}
         </div>

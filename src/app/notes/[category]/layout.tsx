@@ -1,5 +1,5 @@
 
-async function SlugLayout({ children } : any) {
+function SlugLayout({ children } : any) {
 
   return (
     <div className="my-8">
