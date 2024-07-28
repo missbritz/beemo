@@ -14,7 +14,6 @@ const TopBarComponent = ({ profile }: { profile: any }) => {
                 {profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks && <SocialIconComponent social={profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks} />}
             </div> 
             </div>
-            <hr className="border-b border-solid border-slate-800"/>
         </header>
     )
 }

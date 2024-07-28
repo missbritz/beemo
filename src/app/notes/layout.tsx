@@ -13,7 +13,7 @@ async function SlugLayout({ children } : any) {
     <PageWrapper profile={profile}>
         <div className="my-8">
           <BackButton>{`< back`}</BackButton>
-        {children}
+          {children}
       </div>
     </PageWrapper>
   )

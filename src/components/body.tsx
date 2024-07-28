@@ -46,7 +46,7 @@ const BodyComponent = ({ posts, noReadMoreBtn }: any) => {
         <>
             <AllPosts />
             {!noReadMoreBtn && <GoToNotes/>}
-        </>
+        </> 
     )
 }
 
