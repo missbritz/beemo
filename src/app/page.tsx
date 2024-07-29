@@ -1,7 +1,5 @@
 import client from "@/utils/apollo-client";
 import ProfileComponent from "@/components/profile";
-import ConnectComponent from "@/components/connect";
-import ToolkitComponent from '@/components/toolkit';
 import BodyComponent from "@/components/body";
 import { getMyProfile } from '@/queries/my-profile';
 import { getLatestFivePosts } from "../queries/posts";
