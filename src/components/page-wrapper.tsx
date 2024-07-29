@@ -3,18 +3,18 @@ import TopBarComponent from "./topbar";
 
 export default function PageWrapper ({ profile, children }: any) {
     return (
-        <main className="w-full flex flex-col justify-center items-center min-h-screen text-slate-500">
-            <div className="border-b border-solid border-slate-800 w-full flex flex-col justify-center items-center px-6 md:px-8">
+        <main className="w-full flex flex-col justify-center items-start text-slate-500">
+            <div className="border-b border-solid border-slate-800 w-full flex flex-col justify-center items-center px-6 md:px-8 sticky top-0 left-0 dark:bg-darkImg dark:bg-transparent z-50">
                 <div className="max-w-5xl md:w-7/12 w-full justify-center">
                     {profile?.data?.myProfile?.data?.attributes && <TopBarComponent profile={profile}/>}
                 </div>
             </div>
-            <div className="border-b border-solid border-slate-800 w-full flex flex-col justify-center items-center bg-darkBodyImg px-6 md:px-8">
-                <div className="max-w-5xl md:w-7/12 sm:w-full">
-                    <section id="scroll-container" className="w-full overflow-y-auto h-[calc(100vh-8rem)] md:h-[calc(100vh-11rem)] scroll-smooth">
+            <div className="w-full flex flex-col justify-center items-center px-6 md:px-8 overflow-y-auto scroll-smooth">
+                <div className="max-w-5xl md:w-7/12 w-full">
+                    <section id="scroll-container" className="w-full">
                     {children}
                     </section>
-                    <FooterComponent/>
+                    <FooterComponent profile={profile}/>
                 </div>
             </div>
         </main>

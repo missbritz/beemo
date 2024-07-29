@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${figtree.className} dark:bg-darkImg dark:bg-transparent`}>
+      <body className={`${figtree.className} bg-darkBodyImg bg-cover min-h-screen`}>
           {children}
       </body>
       <GoogleAnalytics gaId={isProductionGA} />

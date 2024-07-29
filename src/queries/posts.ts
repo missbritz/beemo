@@ -39,6 +39,24 @@ const getAllPost = gql`
     }
 `
 
+const getLatestFivePosts = gql`
+    query{
+        posts (sort: "Published:desc", pagination: { limit: 5 }){
+            data {
+                id
+                attributes {
+                    Title
+                    Published
+                    Content
+                    Category
+                    Summary
+                    Slug
+                }
+            }
+        }
+    }
+`
+
 const getPostCategories = gql`
     query{
         posts {
@@ -78,5 +96,6 @@ export {
     getPostCategories,
     getPostsInCategory,
     getPostData,
-    getAllPost
+    getAllPost,
+    getLatestFivePosts
 }
