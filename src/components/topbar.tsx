@@ -3,7 +3,7 @@ import SocialIconComponent from './social'
 
 const TopBarComponent = ({ profile }: { profile: any }) => {
     return (
-        <header className="w-full sticky content-center my-4">
+        <header className="w-full sticky content-center my-6">
             <div className="flex flex-row">
             <div className="basis-2/4">
                 <Link href="/">
