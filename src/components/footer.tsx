@@ -1,8 +1,15 @@
-const FooterComponent = () => {
+import ConnectComponent from "./connect"
+import ToolkitComponent from "./toolkit"
+
+const FooterComponent = ({ profile }: any) => {
     return (
-        <footer className="w-full sticky pb-4">
-            <hr className="mb-4 border-b border-solid border-slate-800"/>
-            <p className="text-gray-400"><a href={`${process.env.APP_BASE_URL}#about`} className="hover:text-pink-500 focus:text-pink-500">about</a> | <a href={`${process.env.APP_BASE_URL}#talk`} className="hover:text-pink-500 focus:text-pink-500">let's talk</a> | <a href={`${process.env.APP_BASE_URL}#connect`} className="hover:text-pink-500 focus:text-pink-500">let's connect</a> | <a href={`${process.env.APP_BASE_URL}#toolkit`} className="hover:text-pink-500 focus:text-pink-500">the toolkit</a></p>
+        <footer className="w-full pb-4">
+            {profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks && <ConnectComponent social={profile?.data?.myProfile?.data?.attributes?.SocialMediaLinks}></ConnectComponent>}
+            <div id="toolkit" className="pt-8 border-t border-solid border-slate-800">
+                <h2 className="text-cpink-900 font-bold text-2xl md:text-4xl">The Toolkit</h2>
+                <p className="text-gray-400 max-w-prose my-2 text-sm">Built with these swags</p>
+                {profile?.data?.myProfile?.data?.attributes?.KitIcons && <ToolkitComponent icons={profile?.data?.myProfile?.data?.attributes?.KitIcons}></ToolkitComponent>}
+            </div>
         </footer>
     )
 }
