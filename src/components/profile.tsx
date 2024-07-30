@@ -1,11 +1,15 @@
 import Image from "next/image"
 import RichTextBlockRenderer from "./block-renderer"
+import SocialIconComponent from "./social"
 
 const ProfileComponent = ({ profile } : any) => {
     return (
         <div className="flex flex-row">
             <div className="basis-3/4">
                 <RichTextBlockRenderer content={profile.attributes.MyIntro} />
+                <div className="flex flex-row my-3">
+                    {profile?.attributes?.SocialMediaLinks && <SocialIconComponent social={profile?.attributes?.SocialMediaLinks} />}   
+                </div> 
             </div>
             <div className="flex flex-row basis-1/4 justify-end align-middle items-center">
                 <Image
