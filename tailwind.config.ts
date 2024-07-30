@@ -28,8 +28,8 @@ const config: Config = {
       },
     },
     backgroundImage: {
-      darkImg: 'linear-gradient(15deg, rgba(13,17,23,1) 0%, rgba(28,40,59,1) 80%, rgba(157,23,77,1) 100%)',
-      darkBodyImg: 'linear-gradient(145deg, rgba(13,17,23,0.01) 0%, rgba(28,40,59,1) 40%, rgba(28,40,59,0.01) 100%)',
+      darkImg: 'linear-gradient(15deg, #0d1117 0%, #1c283b 80%, #9d174d 100%)',
+      darkBodyImg: 'linear-gradient(145deg, #0d1117 0%, #1c283b 40%, #0d1117 100%)',
     },
   },
   plugins: [],
