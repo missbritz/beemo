@@ -35,7 +35,7 @@ const BodyComponent = ({ posts, noReadMoreBtn }: any) => {
         return (
             <Link href="/notes" className="my-4 relative inline-flex items-center justify-center rounded-md p-0.5 mb-2 me-2 overflow-hidden bg-cpink-900 group-hover:bg-opacity-0">
                 <span className="relative px-5 py-2.5 transition-all ease-in duration-75 text-gray-400 bg-cblue-800 rounded-md group-hover:bg-opacity-0">
-                    Read more
+                    more
                 </span>
             </Link>
         )

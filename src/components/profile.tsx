@@ -14,10 +14,10 @@ const ProfileComponent = ({ profile } : any) => {
                     height={100}
                     alt="Britta Oblan - Software Engineer from PH"
                     style={{
-                    borderRadius: '50px',
-                    border: '1px solid #ffffff',
-                    margin: '20px 0 20px 20px',
-                    justifyContent: 'flex-end'
+                        borderRadius: '50px',
+                        border: '1px solid #ffffff',
+                        margin: '20px 0 20px 20px',
+                        justifyContent: 'flex-end'
                     }}
                 />
             </div>
