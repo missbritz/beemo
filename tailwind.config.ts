@@ -15,6 +15,7 @@ const config: Config = {
         },
         "cpink": {
           900: "#9d174d",
+          800: "#9f2e65"
         }
       },
     },
