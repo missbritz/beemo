@@ -2,7 +2,7 @@ import Emoji from "@/components/emoji";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Britta Oblan - notes",
+    title: "Britta Oblan - Lab",
     description: "",
 };
 
