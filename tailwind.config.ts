@@ -7,6 +7,18 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    extend: {
+      colors: {
+        "cblue": {
+          900: "#020617",
+          800: "#1c283b"
+        },
+        "cpink": {
+          900: "#9d174d",
+          800: "#9f2e65"
+        }
+      },
+    },
     theme: {
       screens: {
         sm: "640px",
@@ -16,17 +28,9 @@ const config: Config = {
         "2xl": "1536px",
       },
     },
-    colors: {
-      "cblue": {
-        900: "#020617",
-        800: "#1c283b"
-      },
-      "cpink": {
-        900: "#9d174d",
-      }
-    },
     backgroundImage: {
-      darkImg: 'linear-gradient(15deg, rgba(13,17,23,1) 0%, rgba(28,40,59,1) 80%, rgba(157,23,77,1) 100%)',
+      darkImg: 'linear-gradient(15deg, #0d1117 0%, #1c283b 80%, #9d174d 100%)',
+      darkBodyImg: 'linear-gradient(145deg, #0d1117 0%, #1c283b 40%, #0d1117 100%)',
     },
   },
   plugins: [],

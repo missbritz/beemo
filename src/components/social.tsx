@@ -12,11 +12,11 @@ const SocialIconComponent = ({ social }: any) => {
     const GetIcon = ({ icon }: any) => {
         switch (icon) {
             case 'LinkedIn':
-                return <AiFillLinkedin size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
+                return <AiFillLinkedin size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 focus:text-pink-500"/>
             case 'Github':
-                return <AiOutlineGithub size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
+                return <AiOutlineGithub size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 focus:text-pink-500"/>
             case 'Instagram':
-                return <AiFillInstagram size="1.7em" className="p-0.5 text-neutral-400 hover:text-black focus:text-black"/>
+                return <AiFillInstagram size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 focus:text-pink-500"/>
         }
     }
 
