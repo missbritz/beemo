@@ -4,8 +4,8 @@
     "description": "Software Engineer from Philippines, living in Singapore",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#f2f2f2",
-    "theme_color": "#f2f2f2",
+    "background_color": "#020617",
+    "theme_color": "#9d174d",
     "icons": [
       {
         "src": "/favicon.ico",

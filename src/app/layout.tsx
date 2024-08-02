@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google'
-
-const inter = Inter({ subsets: ["latin"] });
+const figtree = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Britta Oblan",
@@ -19,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${figtree.className} bg-darkBodyImg bg-cover min-h-screen`}>
+          {children}
+      </body>
       <GoogleAnalytics gaId={isProductionGA} />
     </html>
   );

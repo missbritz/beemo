@@ -1,7 +1,6 @@
 # next.js build output
 .next
 # dotenv environment variables file (build for Zeit Now)
-.env
 .env.build
 # Dependency directories
 node_modules/
@@ -13,4 +12,6 @@ yarn-error.log*
 # Export
 out/
 # etc
+public/.DS_Store
+src/.DS_Store
 .DS_Store
