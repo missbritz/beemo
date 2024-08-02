@@ -10,7 +10,7 @@ const RichTextBlockRenderer = ({ content }: any) => {
       return (
         items.length &&
           items.map((child: any) => {
-            return <li className="my-5 text-gray-400">{child}</li>
+            return child
           }
         )
       )
@@ -18,11 +18,11 @@ const RichTextBlockRenderer = ({ content }: any) => {
 
     return (
       elem.format === 'ordered' ? (
-        <ol className="list-decimal ml-4">
+        <ol className="list-decimal ml-4 text-gray-400">
           {ListItems(elem.children)}
         </ol>
       ) : (
-        <ul className="list-disc ml-4">
+        <ul className="list-disc ml-4 text-gray-400">
           {ListItems(elem.children)}
         </ul>
       )
