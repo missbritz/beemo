@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import SocialIconComponent from './social'
 
 const TopBarComponent = ({ profile }: { profile: any }) => {
     return (
