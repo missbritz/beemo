@@ -9,12 +9,12 @@ export const getMyProfile = gql`
                 MainTitle
                 MyIntro
                 SocialMediaLinks {
-                Label
-                Url
+                    Label
+                    Url
                 }
                 KitIcons {
-                Label
-                Url
+                    Label
+                    Url
                 }
             }
             }

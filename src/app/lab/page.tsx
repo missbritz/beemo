@@ -1,5 +1,10 @@
 import Emoji from "@/components/emoji";
 
+export const metadata: Metadata = {
+    title: "Britta Oblan - notes",
+    description: "",
+};
+
 export default async function Page() {
 
     return (
