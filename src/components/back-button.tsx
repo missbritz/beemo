@@ -9,7 +9,7 @@ function BackButton({
 }>) {
   const router = useRouter();
   return (
-    <button className={`${className} text-sm md:mb-14 mb-5 text-gray-600 font-bold focus:text-pink-500 hover:text-pink-500`} onClick={() => router.back()}>
+    <button className={`${className} text-sm md:mb-14 mb-5 text-gray-600 font-bold  hover:text-pink-500`} onClick={() => router.back()}>
       {children}
     </button>
   );

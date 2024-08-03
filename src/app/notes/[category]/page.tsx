@@ -1,6 +1,5 @@
 import client from "@/utils/apollo-client"
 import CategoryPosts from "@/components/category-posts";
-import { notFound } from "next/navigation";
 import { getPostCategories, getPostsInCategory } from "@/queries/posts";
 
 export async function generateStaticParams() {

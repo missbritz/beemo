@@ -7,21 +7,21 @@ const ToolkitComponent = ({ icons }: any) => {
     const GetIcon = ({ icon }: any) => {
         switch (icon) {
             case 'Railway':
-                return <SiRailway size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 focus:text-pink-500"/>
+                return <SiRailway size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 "/>
             case 'Github':
-                return <FaGithub size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 focus:text-pink-500"/>
+                return <FaGithub size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 "/>
             case 'AWS':
-                return <FaAws size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 focus:text-pink-500"/>
+                return <FaAws size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 "/>
             case 'Apollo':
-                return <SiApollographql size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 focus:text-pink-500"/>
+                return <SiApollographql size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 "/>
             case 'GraphQL':
-                return <SiGraphql size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 focus:text-pink-500"/>
+                return <SiGraphql size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 "/>
             case 'NextJs':
-                return <RiNextjsFill size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 focus:text-pink-500"/>
+                return <RiNextjsFill size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 "/>
             case 'Strapi':
-                return <SiStrapi size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 focus:text-pink-500"/>
+                return <SiStrapi size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 "/>
             case 'TailwindCSS':
-                return <RiTailwindCssFill size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 focus:text-pink-500"/>
+                return <RiTailwindCssFill size="1.7em" className="p-0.5 text-gray-400 hover:text-pink-500 "/>
         }
     }
     return (
