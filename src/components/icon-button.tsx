@@ -1,6 +1,6 @@
 const IconButtonComponent = (props:any) => {
     return (
-    <a href={props.link} target="_blank">
+    <a href={props.link} target="_blank" className="hover:rainbow-bg">
       {props.children}
     </a>
     )

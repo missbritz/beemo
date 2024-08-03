@@ -1,6 +1,7 @@
 import DateFormatter from "@/utils/date-formatter"
 import Emoji from "./emoji"
 import Link from "next/link"
+import "../app/globals.css";
 
 const BodyComponent = ({ posts, noReadMoreBtn }: any) => {
 
@@ -11,12 +12,11 @@ const BodyComponent = ({ posts, noReadMoreBtn }: any) => {
                     <article className="flex flex-col items-start justify-between">
                         <div className="flex items-center gap-x-4 text-xs">
                             <time dateTime={DateFormatter(post.attributes.Published)} className="text-gray-400">{DateFormatter(post.attributes.Published)}</time>
-                            <Link href={`/notes/${post.attributes.Category}`} className="relative z-0 rounded-full bg-slate-900 px-3 py-1.5 font-medium text-gray-600 hover:text-pink-500">{post.attributes.Category}</Link>
+                            <Link href={`/notes/${post.attributes.Category}`} className="relative z-0 rounded-full bg-slate-900 px-3 py-1.5 font-medium text-gray-600  hover:rainbow-bg">{post.attributes.Category}</Link>
                         </div>
                         <div className="group relative">
-                            <h3 className="mt-3 text-2xl font-semibold leading-6  text-pink-800 group-hover:text-pink-500">
+                            <h3 className="mt-3 text-2xl font-semibold leading-6 text-pink-800 hover:rainbow-bg">
                             <Link href={`/notes/${post.attributes.Category}/${post.attributes.Slug}`}>
-                                <span className="absolute inset-0"></span>
                                 {post.attributes.Title}
                             </Link>
                             </h3>

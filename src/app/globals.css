@@ -49,4 +49,19 @@ a {
   .text-balance {
     text-wrap: balance;
   }
+  
+  @keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .rainbow-bg {
+    background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #33cc33, #0066ff, #cc33ff, #ff3399);
+    background-size: 400% 400%;
+    animation: rainbow 2s linear infinite;
+    background-clip: text;
+    color: transparent
+  }
+
 }
