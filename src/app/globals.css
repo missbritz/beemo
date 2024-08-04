@@ -64,4 +64,44 @@ a {
     color: transparent
   }
 
+  .rainbow-gradient-Railway:hover {
+    fill: url('#rainbow-gradient-Railway')
+  }
+
+  .rainbow-gradient-Github:hover {
+    fill: url('#rainbow-gradient-Github')
+  }
+
+  .rainbow-gradient-AWS:hover {
+    fill: url('#rainbow-gradient-AWS')
+  }
+
+  .rainbow-gradient-Apollo:hover {
+    fill: url('#rainbow-gradient-Apollo')
+  }
+
+  .rainbow-gradient-GraphQL:hover {
+    fill: url('#rainbow-gradient-GraphQL')
+  }
+
+  .rainbow-gradient-NextJs:hover {
+    fill: url('#rainbow-gradient-NextJs')
+  }
+
+  .rainbow-gradient-Strapi:hover {
+    fill: url('#rainbow-gradient-Strapi')
+  }
+
+  .rainbow-gradient-TailwindCSS:hover {
+    fill: url('#rainbow-gradient-TailwindCSS')
+  }
+
+  .rainbow-gradient-LinkedIn:hover {
+    fill: url('#rainbow-gradient-LinkedIn')
+  }
+  
+  .rainbow-gradient-Instagram:hover {
+    fill: url('#rainbow-gradient-Instagram')
+  }
+
 }
