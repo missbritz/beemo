@@ -64,6 +64,13 @@ a {
     color: transparent
   }
 
+  .rainbow-btn {
+    background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #33cc33, #0066ff, #cc33ff, #ff3399);
+    background-size: 400% 400%;
+    animation: rainbow 2s linear infinite;
+    color: transparent
+  }
+
   .rainbow-gradient-Railway:hover {
     fill: url('#rainbow-gradient-Railway')
   }
@@ -99,7 +106,7 @@ a {
   .rainbow-gradient-LinkedIn:hover {
     fill: url('#rainbow-gradient-LinkedIn')
   }
-  
+
   .rainbow-gradient-Instagram:hover {
     fill: url('#rainbow-gradient-Instagram')
   }
