@@ -12,7 +12,7 @@ export default function SinglePost ({ post }: any) {
                 <h2 className="text-cpink-900 font-bold text-3xl md:text-5xl my-5">
                 {post.attributes.Title}
                 </h2>
-                <Link href={`/notes/${post.attributes.Category}`} className="relative z-0 rounded-full bg-slate-900 px-3 py-1.5 font-medium text-gray-600 hover:text-pink-500 text-sm">{post.attributes.Category}</Link>
+                <Link href={`/notes/${post.attributes.Category}`} className="relative z-0 rounded-full bg-slate-900 px-3 py-1.5 font-medium text-gray-600  hover:rainbow-bg text-sm">{post.attributes.Category}</Link>
                 <p className="text-gray-400 my-3">{post.attributes.Summary}</p>
                 <hr className="my-8 border-b border-solid border-slate-800"/>
                 {post.attributes.Content && <RichTextBlockRenderer content={post.attributes.Content} />}

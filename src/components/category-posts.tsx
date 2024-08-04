@@ -12,7 +12,7 @@ const CategoryPosts = ({ posts }: any) => {
                             <time dateTime={DateFormatter(post.attributes.Published)} className="text-gray-400">{DateFormatter(post.attributes.Published)}</time>
                         </div>
                         <div className="group relative">
-                            <h3 className="mt-3 text-2xl font-semibold leading-6 text-pink-800 group-hover:text-pink-500">
+                            <h3 className="mt-3 text-2xl font-semibold leading-6 text-pink-800 group- hover:rainbow-bg">
                             <Link href={`/notes/${post.attributes.Category}/${post.attributes.Slug}`}>
                                 <span className="absolute inset-0"></span>
                                 {post.attributes.Title}
