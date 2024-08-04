@@ -12,7 +12,7 @@ export default async function Page() {
         <div>
             <h2 className="text-cpink-900 font-bold text-2xl md:text-4xl capitalize pb-5">Lab</h2>
             <div className="py-10">
-                <p className="text-center text-gray-400">Stay tuned — I'm cooking up something spectacular! <Emoji symbol="🧪" /></p>
+                <p className="text-center text-gray-400">Stay tuned — I'm cooking up something nice! <Emoji symbol="🧪" /><Emoji symbol="✨" /></p>
             </div>
         </div>
     )

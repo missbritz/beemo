@@ -2,6 +2,7 @@ import DateFormatter from "@/utils/date-formatter"
 import Emoji from "./emoji"
 import Link from "next/link"
 import "../app/globals.css";
+import Chips from "./chips";
 
 const BodyComponent = ({ posts, noReadMoreBtn }: any) => {
 
@@ -12,7 +13,7 @@ const BodyComponent = ({ posts, noReadMoreBtn }: any) => {
                     <article className="flex flex-col items-start justify-between">
                         <div className="flex items-center gap-x-4 text-xs">
                             <time dateTime={DateFormatter(post.attributes.Published)} className="text-gray-400">{DateFormatter(post.attributes.Published)}</time>
-                            <Link href={`/notes/${post.attributes.Category}`} className="relative z-0 rounded-full bg-slate-900 px-3 py-1.5 font-medium text-gray-600  hover:rainbow-bg">{post.attributes.Category}</Link>
+                            <Chips label={post.attributes.Category} link={`/notes/${post.attributes.Category}`} />
                         </div>
                         <div className="group relative">
                             <h3 className="mt-3 text-2xl font-semibold leading-6 text-pink-800 hover:rainbow-bg">
@@ -33,11 +34,15 @@ const BodyComponent = ({ posts, noReadMoreBtn }: any) => {
 
     const GoToNotes = () => {
         return (
-            <Link href="/notes" className="my-4 relative inline-flex items-center justify-center rounded-md p-0.5 mb-2 me-2 overflow-hidden bg-cpink-900 group-hover:bg-opacity-0">
-                <span className="relative px-5 py-2.5 transition-all ease-in duration-75 text-gray-400 bg-cblue-800 rounded-md group-hover:bg-opacity-0">
-                    more
-                </span>
-            </Link>
+            <div className="flex justify-center pt-5 pb-3">
+                <Link href="/notes" className="my-4 relative inline-flex items-center justify-center rounded-full p-0.5 mb-2 me-2 overflow-hidden bg-cpink-900 hover:rainbow-btn">
+                    <span className="relative transition-all ease-in duration-75 rounded-full text-gray-400 bg-cpink-800 hover:bg-slate-900">
+                        <span className="relative block px-7 py-2.5 transition-all rounded-full ease-in duration-75 text-gray-400 bg-cpink-800  hover:rainbow-bg">
+                            more
+                        </span>
+                    </span>
+                </Link>
+            </div>
         )
     }
 
