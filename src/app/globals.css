@@ -49,4 +49,59 @@ a {
   .text-balance {
     text-wrap: balance;
   }
+  
+  @keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .rainbow-bg {
+    background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #33cc33, #0066ff, #cc33ff, #ff3399);
+    background-size: 400% 400%;
+    animation: rainbow 2s linear infinite;
+    background-clip: text;
+    color: transparent
+  }
+
+  .rainbow-gradient-Railway:hover {
+    fill: url('#rainbow-gradient-Railway')
+  }
+
+  .rainbow-gradient-Github:hover {
+    fill: url('#rainbow-gradient-Github')
+  }
+
+  .rainbow-gradient-AWS:hover {
+    fill: url('#rainbow-gradient-AWS')
+  }
+
+  .rainbow-gradient-Apollo:hover {
+    fill: url('#rainbow-gradient-Apollo')
+  }
+
+  .rainbow-gradient-GraphQL:hover {
+    fill: url('#rainbow-gradient-GraphQL')
+  }
+
+  .rainbow-gradient-NextJs:hover {
+    fill: url('#rainbow-gradient-NextJs')
+  }
+
+  .rainbow-gradient-Strapi:hover {
+    fill: url('#rainbow-gradient-Strapi')
+  }
+
+  .rainbow-gradient-TailwindCSS:hover {
+    fill: url('#rainbow-gradient-TailwindCSS')
+  }
+
+  .rainbow-gradient-LinkedIn:hover {
+    fill: url('#rainbow-gradient-LinkedIn')
+  }
+  
+  .rainbow-gradient-Instagram:hover {
+    fill: url('#rainbow-gradient-Instagram')
+  }
+
 }
