@@ -57,7 +57,7 @@ const RichTextBlockRenderer = ({ content }: any) => {
           }
         },
         // For links, you may want to use the component from your router or framework
-        link: ({ children, url }) => <Link href={url} className="text-cpink-800">{children}</Link>,
+        link: ({ children, url }) => <Link href={url} className="text-cpink-800 hover:rainbow-bg">{children}</Link>,
         image: ({ image }) => {
           return (
             <Image
