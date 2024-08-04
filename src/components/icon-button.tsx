@@ -1,10 +1,8 @@
-"use client"
 import { AiFillLinkedin, AiOutlineGithub, AiFillInstagram } from "react-icons/ai";
 import { SiRailway, SiApollographql, SiStrapi, SiGraphql } from "react-icons/si";
 import { FaGithub, FaAws } from "react-icons/fa";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import RainbowIcon from "./rainbow-icon";
-import Link from "next/link";
 
 const IconButtonComponent = ({icons}: any) => {
 
