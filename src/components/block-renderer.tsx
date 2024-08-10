@@ -70,7 +70,7 @@ const RichTextBlockRenderer = ({ content }: any) => {
           );
         },
         code: ({children}) => {
-          return <pre className="p-5 my-5 rounded-r bg-cblue-900 text-gray-400">{children}</pre>
+          return <pre className="p-5 first:mt-5 last:mb-5 overflow-y-auto rounded-r bg-cblue-900 text-gray-400">{children}</pre>
         },
         list: (props) => {
           return handleListComponent(props);
