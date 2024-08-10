@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Navigation from './navigation'
 
 const TopBarComponent = ({ profile }: { profile: any }) => {
     return (
@@ -10,7 +11,7 @@ const TopBarComponent = ({ profile }: { profile: any }) => {
                 </Link>
             </div>
             <div className="flex flex-row basis-2/4 justify-end align-middle items-center">
-                <p className="text-gray-400"><a href={`/`} className=" hover:rainbow-bg ">about</a> | <a href="/notes" className=" hover:rainbow-bg ">notes</a> | <a href="/lab" className=" hover:rainbow-bg ">lab</a></p>
+                <Navigation/>
             </div> 
             </div>
         </header>
