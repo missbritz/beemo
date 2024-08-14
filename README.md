@@ -8,7 +8,12 @@ To start the graphQL mock server, run the following command.  This will start th
 ```bash
 npm run start-server
 ```
-### 2. Running the Development Server
+### 2. Prepare the environment
+Run the command below to prepare the environment
+```bash
+npm run prepare-env
+```
+### 3. Running the Development Server
 Start the development server:
 ```bash
 npm run dev
