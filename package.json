@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "start-server": "node --loader ts-node/esm mock-server/server.ts"
+    "start-server": "NODE_OPTIONS='--experimental-specifier-resolution=node' node --loader ts-node/esm --inspect mock-server/server.ts"
   },
   "dependencies": {
     "@apollo/client": "3.10.0-rc.1",

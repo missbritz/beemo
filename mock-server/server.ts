@@ -6,14 +6,15 @@ import { typeDefs } from './schema';
 
 const resolvers = {
   Query: {
-    query: () => ''
-  },
+    posts: () => '',
+    myProfile: () => '',
+  }
 };
 
 const mocks = {
   Int: () => 6,
   Float: () => 22.1,
-  String: () => 'Hello',
+  String: () => 'paragraph',
 };
 
 async function startApolloServer() {

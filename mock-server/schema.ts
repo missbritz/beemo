@@ -1,16 +1,20 @@
 export const typeDefs = `#graphql
     type Query {
-        query: getTypes
+        posts: getPostData
+        myProfile: getMyProfileData
     }
 
-    type getTypes {
-        posts: getPosts
-        myProfile: getMyProfile
+    type getPostData {
+        data: getPosts
     }
     
+    type getMyProfileData {
+        data: getMyProfile
+    }
+
     type getPosts {
         id: String
-        attributes: getPostsAttributes
+        attributes: [getPostsAttributes]
     }
 
     type getPostsAttributes {
@@ -32,9 +36,9 @@ export const typeDefs = `#graphql
 
     type getProfileAttributes {
         MainTitle: String
-        MyIntro: String
-        SocialMediaLinks: getSocialMedia
-        KitIcons: getKitIcons
+        MyIntro: [getRichTextBlock]
+        SocialMediaLinks: [getSocialMedia]
+        KitIcons: [getKitIcons]
     }
 
     type getSocialMedia {
@@ -45,5 +49,19 @@ export const typeDefs = `#graphql
     type getKitIcons {
         Label: String
         Url: String
+    }
+
+    type getRichTextBlock {
+        type: String
+        text: String
+    }
+
+    type getParagraphChildren {
+        type: String
+        level: Int
+        format: String
+        children: String
+        url: String
+        text: String
     }
 `;
