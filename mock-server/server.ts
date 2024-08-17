@@ -14,7 +14,7 @@ const resolvers = {
 const mocks = {
   Int: () => 6,
   Float: () => 22.1,
-  String: () => 'paragraph'
+  String: () => 'text'
 };
 
 async function startApolloServer() {

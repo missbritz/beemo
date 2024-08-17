@@ -7,7 +7,10 @@ export const getMyProfile = gql`
             id
             attributes {
                 MainTitle
-                MyIntro
+                MyIntro {
+                    type
+                    text
+                }
                 SocialMediaLinks {
                     Label
                     Url
