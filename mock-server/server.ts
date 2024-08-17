@@ -14,7 +14,7 @@ const resolvers = {
 const mocks = {
   Int: () => 6,
   Float: () => 22.1,
-  String: () => 'paragraph',
+  String: () => 'paragraph'
 };
 
 async function startApolloServer() {
@@ -22,8 +22,7 @@ async function startApolloServer() {
     const server = new ApolloServer({
         schema: addMocksToSchema({
             schema: makeExecutableSchema({ typeDefs, resolvers }),
-            mocks,
-            preserveResolvers: true,
+            mocks
         }),
     });
 

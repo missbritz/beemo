@@ -57,11 +57,18 @@ export const typeDefs = `#graphql
     }
 
     type getParagraphChildren {
-        type: String
+        type: BlockTypes
         level: Int
         format: String
         children: String
         url: String
         text: String
+    }
+
+    enum BlockTypes {
+        heading
+        paragraph
+        list
+        quote
     }
 `;
