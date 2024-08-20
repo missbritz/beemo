@@ -4,22 +4,24 @@ export const getMyProfile = gql`
     query{
         myProfile {
             data {
-            id
-            attributes {
-                MainTitle
-                MyIntro {
-                    type
-                    text
+                attributes {
+                    MainTitle
+                    MyIntro {
+                        type
+                        children {
+                            text
+                            type
+                        }
+                    }
+                    KitIcons {
+                        Label
+                        Url
+                    }
+                    SocialMediaLinks {
+                        Label
+                        Url
+                    }
                 }
-                SocialMediaLinks {
-                    Label
-                    Url
-                }
-                KitIcons {
-                    Label
-                    Url
-                }
-            }
             }
         }
     }

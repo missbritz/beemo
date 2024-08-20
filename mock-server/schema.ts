@@ -36,9 +36,14 @@ export const typeDefs = `#graphql
 
     type getProfileAttributes {
         MainTitle: String
-        MyIntro: [getMyIntro]
+        MyIntro: [blockType]
         SocialMediaLinks: [getSocialMedia]
         KitIcons: [getKitIcons]
+    }
+
+    type blockType {
+        type: String
+        children: [getMyIntro]
     }
 
     type getMyIntro {

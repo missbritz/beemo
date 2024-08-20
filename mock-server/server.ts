@@ -3,6 +3,7 @@ import { startStandaloneServer } from '@apollo/server/standalone';
 import { addMocksToSchema } from '@graphql-tools/mock';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { typeDefs } from './schema';
+import casual from 'casual';
 
 const resolvers = {
   Query: {
@@ -12,9 +13,37 @@ const resolvers = {
 };
 
 const mocks = {
-  Int: () => 6,
-  Float: () => 22.1,
-  String: () => 'text'
+  getProfileAttributes: () => ({
+    MainTitle: casual.name,
+    MyIntro: [
+        {
+            type: 'paragraph',
+            children: [
+              { text: casual.description, type: 'text' },
+              {
+                text: casual.description,
+                type: 'text'
+              },
+              {
+                text: casual.description,
+                type: 'text'
+              }
+            ]
+        }
+    ],
+    SocialMediaLinks: [
+        {
+            Label: casual.word,
+            Url: casual.url
+        }
+    ],
+    KitIcons: [
+        {
+            Label: casual.word,
+            Url: casual.url
+        }
+    ]
+  })
 };
 
 async function startApolloServer() {
