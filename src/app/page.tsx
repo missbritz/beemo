@@ -14,12 +14,12 @@ async function Home() {
     query: getMyProfile
   })
 
-  console.log(profile)
+  // console.log(posts)
 
   return (
     <PageWrapper profile={profile}>
       <div id="about" className="pt-8">
-        {/* {profile?.data?.myProfile?.data && <ProfileComponent profile={profile.data.myProfile.data}/>} */}
+        {profile?.data?.myProfile?.data && <ProfileComponent profile={profile.data.myProfile.data}/>}
       </div>
       <div id="talk">
         <hr className="my-8 border-b border-solid border-slate-800"/>

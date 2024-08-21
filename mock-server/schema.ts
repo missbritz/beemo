@@ -43,10 +43,10 @@ export const typeDefs = `#graphql
 
     type blockType {
         type: String
-        children: [getMyIntro]
+        children: [getMyText]
     }
 
-    type getMyIntro {
+    type getMyText {
         type: String
         text: String
     }

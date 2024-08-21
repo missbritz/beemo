@@ -13,51 +13,38 @@ const resolvers = {
 };
 
 const mocks = {
-  getProfileAttributes: () => ({
-    MainTitle: casual.name,
-    MyIntro: [
-        {
-            type: 'paragraph',
-            children: [
-              { text: casual.description, type: 'text' },
-              {
+    blockType: () => ({
+        type: 'paragraph',
+        children: [
+            {
                 text: casual.description,
-                type: 'text'
-              },
-              {
-                text: casual.description,
-                type: 'text'
-              }
-            ]
-        }
-    ],
-    SocialMediaLinks: [
-        {
-            Label: casual.word,
-            Url: casual.url
-        }
-    ],
-    KitIcons: [
-        {
-            Label: casual.word,
-            Url: casual.url
-        }
-    ]
-  })
+                type: 'text' 
+            }
+        ]
+    }),
+    getSocialMedia: () => ({
+        Label: casual.description,
+        Url: 'text' 
+    }),
+    getKitIcons: () => ({
+        Label: casual.word,
+        Url: casual.url
+    })
 };
-
-async function startApolloServer() {
-
-    const server = new ApolloServer({
-        schema: addMocksToSchema({
-            schema: makeExecutableSchema({ typeDefs, resolvers }),
-            mocks
-        }),
-    });
-
-    const { url } = await startStandaloneServer(server, { listen: { port: 4000 } });
-    console.log(`🚀 Server listening at: ${url}`);
-}
+  
+  async function startApolloServer() {
+  
+      const server = new ApolloServer({
+          schema: addMocksToSchema({
+              schema: makeExecutableSchema({ typeDefs, resolvers }),
+              mocks,
+              preserveResolvers: true,
+          }),
+      });
+  
+      const { url } = await startStandaloneServer(server, { listen: { port: 4000 } });
+      console.log(`🚀 Server listening at: ${url}`);
+  }
 
 //Start Apollo Mock Server
 startApolloServer();
