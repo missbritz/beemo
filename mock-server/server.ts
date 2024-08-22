@@ -7,7 +7,13 @@ import casual from 'casual';
 
 const resolvers = {
   Query: {
-    posts: () => '',
+    posts: (obj: any, args: any, context: any, info: any) => {
+        console.log('objg',  obj)
+        console.log('args',  args)
+        console.log('context',  context)
+        console.log('info',  info)
+        return
+    },
     myProfile: () => '',
   }
 };
@@ -23,12 +29,26 @@ const mocks = {
         ]
     }),
     getSocialMedia: () => ({
-        Label: casual.description,
+        Label: casual.word,
         Url: 'text' 
     }),
     getKitIcons: () => ({
         Label: casual.word,
         Url: casual.url
+    }),
+    getPosts: () => ({
+        id: casual.uuid,
+        attributes: {
+            Title: casual.title,
+            Published: casual.date(),
+            Content: casual.description,
+            Category: casual.word,
+            Summary: casual.description,
+            Slug: `/${casual.words(3).split(' ').join('-')}`,
+            MetaTitle: casual.title,
+            MetaKeywords: casual.words(3).split(' ').join(', '),
+            MetaDescription: casual.description,
+        }
     })
 };
   

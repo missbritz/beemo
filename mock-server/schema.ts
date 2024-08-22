@@ -5,7 +5,7 @@ export const typeDefs = `#graphql
     }
 
     type getPostData {
-        data: getPosts
+        data: [getPosts]
     }
     
     type getMyProfileData {
@@ -14,7 +14,7 @@ export const typeDefs = `#graphql
 
     type getPosts {
         id: String
-        attributes: [getPostsAttributes]
+        attributes: getPostsAttributes
     }
 
     type getPostsAttributes {
