@@ -29,12 +29,12 @@ const mocks = {
         ]
     }),
     getSocialMedia: () => ({
-        Label: casual.word,
-        Url: 'text' 
+        Label: 'LinkedIn',
+        Url: 'https://linkedin.com' 
     }),
     getKitIcons: () => ({
-        Label: casual.word,
-        Url: casual.url
+        Label: 'Github',
+        Url: 'https://github.com' 
     }),
     getPosts: () => ({
         id: casual.uuid,
