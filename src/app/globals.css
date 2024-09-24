@@ -57,7 +57,7 @@ a {
   }
 
   .rainbow-bg {
-    background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #33cc33, #0066ff, #cc33ff, #ff3399);
+    background: linear-gradient(90deg, #1c283b, #cc33ff, #ff3399, #9f2e65, #9d174d);
     background-size: 400% 400%;
     animation: rainbow 2s linear infinite;
     background-clip: text;
@@ -65,7 +65,7 @@ a {
   }
 
   .rainbow-btn {
-    background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #33cc33, #0066ff, #cc33ff, #ff3399);
+    background: linear-gradient(90deg, #1c283b, #cc33ff, #ff3399,#9f2e65, #9d174d);
     background-size: 400% 400%;
     animation: rainbow 2s linear infinite;
     color: transparent
