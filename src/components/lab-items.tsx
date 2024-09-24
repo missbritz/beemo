@@ -5,8 +5,8 @@ import Emoji from "./emoji"
 import Link from "next/link"
 import "../app/globals.css";
 import Chips from "./chips";
-import { getImage } from "../utils/get-image.ts";
-import { StringToArray } from "../utils/string-to-array.ts";
+import { getImage } from "../utils/get-image";
+import { StringToArray } from "../utils/string-to-array";
 
 const LabItems = ({ items }: any) => {
 

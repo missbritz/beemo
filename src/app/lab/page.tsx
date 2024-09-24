@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { getLab } from "../../queries/lab.ts";
-// import LabItems from "../../components/lab-items.tsx";
+import { getLab } from "../../queries/lab";
 import React from "react";
-import client from "../../utils/apollo-client.ts";
-import LabItems from "../../components/lab-items.tsx";
+import client from "../../utils/apollo-client";
+import LabItems from "../../components/lab-items";
 
 export const metadata: Metadata = {
     title: "Britta Oblan - Lab",
