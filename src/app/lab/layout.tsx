@@ -3,7 +3,6 @@ import client from "@/utils/apollo-client";
 import type { Metadata } from "next";
 import PageWrapper from "@/components/page-wrapper";
 import BackButton from "@/components/back-button";
-import { getLab } from "../../queries/lab.ts";
 import { getMyProfile } from "../../queries/my-profile.ts";
 
 export const metadata: Metadata = {
