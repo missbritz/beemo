@@ -7,11 +7,12 @@ import casual from 'casual';
 
 const resolvers = {
   Query: {
-    posts: (obj: any, args: any, context: any, info: any) => {
+    posts: (obj: any, args: any, context: any, info: any, _parent:any) => {
         console.log('objg',  obj)
         console.log('args',  args)
         console.log('context',  context)
         console.log('info',  info)
+        console.log('parent', _parent)
         return
     },
     myProfile: () => '',
