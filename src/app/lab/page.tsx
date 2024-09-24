@@ -14,10 +14,10 @@ export default async function lab() {
     const getLabItems = await client.query({ query: getLab })
 
     const allLabItems = getLabItems?.data?.labs?.data?.length && getLabItems?.data?.labs?.data
-    //console.log(allLabItems)
+
     return (
         <div>
-            <h2 className="text-cpink-900 font-bold text-2xl md:text-4xl capitalize pb-5">Notes</h2>
+            <h2 className="text-cpink-900 font-bold text-2xl md:text-4xl capitalize pb-5">Lab</h2>
             {allLabItems.length && <LabItems items={allLabItems}/>}
         </div>
     )
