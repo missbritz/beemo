@@ -1,8 +1,8 @@
 import DateFormatter from "@/utils/date-formatter"
 import Emoji from "./emoji"
 import Link from "next/link"
-import "../app/globals.css";
 import Chips from "./chips";
+import "../app/globals.css";
 
 const BodyComponent = ({ posts, noReadMoreBtn }: any) => {
 
