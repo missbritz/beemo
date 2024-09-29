@@ -26,6 +26,7 @@ jobs:
       APP_BACKEND_URL: ${{vars.APP_BACKEND_URL}}
       APP_SALT: ${{vars.APP_SALT}}
       APP_BASE_URL: ${{vars.APP_BASE_URL}}
+      APP_IMAGE_BASE_URL: ${{vars.APP_IMAGE_BASE_URL}}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
