@@ -31,9 +31,12 @@ export default async function Category({ params }: any) {
         }
     })
 
-   // const getCurrentCategory = getPosts.data.posts.data
+    const getCurrentCategory = getPosts.data.posts.data
 
     return (
-        console.log(params)
+        <div>
+            <h2 className="text-cpink-900 font-bold text-2xl md:text-4xl capitalize pb-5">{params.category}</h2>
+            {getCurrentCategory.length && <CategoryPosts posts={getCurrentCategory}/>}
+        </div>
     )
 }
