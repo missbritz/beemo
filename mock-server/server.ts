@@ -4,39 +4,47 @@ import { addMocksToSchema } from '@graphql-tools/mock';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { typeDefs } from './schema';
 import casual from 'casual';
+import GraphQLJSON from 'graphql-type-json';
 
 const resolvers = {
+  JSON: GraphQLJSON,
   Query: {
-    posts: (obj: any, args: any, context: any, info: any, _parent:any) => {
-        console.log('objg',  obj)
-        console.log('args',  args)
-        console.log('context',  context)
-        console.log('info',  info)
-        console.log('parent', _parent)
-        return
-    },
-    myProfile: () => '',
+    posts: () => '',
+    myProfile: () => ({
+        data: {
+            id: casual.uuid,
+            attributes: {
+                MainTitle: casual.title,
+                MyIntro: [{
+                    type: "paragraph",
+                    children: [
+                        { type: "text", text: "Hello, I'm a software developer!" },
+                        { type: "text", text: "I specialize in frontend development." }
+                    ]
+                    },
+                    {
+                        type: "paragraph",
+                        children: [
+                            { type: "text", text: "Another test paragraph" },
+                            { type: "text", text: "I specialize in frontend development." }
+                        ]
+                    }
+                ],
+                SocialMediaLinks: [
+                    { Label: "LinkedIn", Url: "https://linkedin.com" },
+                    { Label: "Twitter", Url: "https://twitter.com" }
+                ],
+                KitIcons: [
+                    { Label: "GitHub", Url: "https://github.com" },
+                    { Label: "React", Url: "https://reactjs.org" }
+                ]
+            }
+        }
+    })
   }
 };
 
 const mocks = {
-    blockType: () => ({
-        type: 'paragraph',
-        children: [
-            {
-                text: casual.description,
-                type: 'text' 
-            }
-        ]
-    }),
-    getSocialMedia: () => ({
-        Label: 'LinkedIn',
-        Url: 'https://linkedin.com' 
-    }),
-    getKitIcons: () => ({
-        Label: 'Github',
-        Url: 'https://github.com' 
-    }),
     getPosts: () => ({
         id: casual.uuid,
         attributes: {

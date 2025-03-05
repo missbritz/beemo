@@ -1,4 +1,6 @@
 export const typeDefs = `#graphql
+    scalar JSON
+
     type Query {
         posts: getPostData
         myProfile: getMyProfileData
@@ -36,7 +38,7 @@ export const typeDefs = `#graphql
 
     type getProfileAttributes {
         MainTitle: String
-        MyIntro: [blockType]
+        MyIntro: [JSON]
         SocialMediaLinks: [getSocialMedia]
         KitIcons: [getKitIcons]
     }

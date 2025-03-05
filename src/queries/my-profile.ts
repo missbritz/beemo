@@ -1,23 +1,18 @@
 import { gql } from "@apollo/client"
 
 export const getMyProfile = gql`
-    query {
+    query{
         myProfile {
             data {
+            id
             attributes {
-                KitIcons {
+                MainTitle
+                MyIntro
+                SocialMediaLinks {
                     Label
                     Url
                 }
-                MainTitle
-                MyIntro {
-                    type
-                    children {
-                        type
-                        text
-                    }
-                }
-                SocialMediaLinks {
+                KitIcons {
                     Label
                     Url
                 }
