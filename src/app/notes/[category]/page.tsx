@@ -7,10 +7,10 @@ export async function generateStaticParams() {
     const posts = await client.query({
         query: getPostCategories
     })
-
     const allPosts = posts.data.posts.data
     return allPosts.length && allPosts.map((post:any) => {
-       return { category: post?.attributes?.Category, slug: post?.attributes?.Slug }
+
+       return { category: post?.attributes?.Category }
     })
 }
 
@@ -31,12 +31,9 @@ export default async function Category({ params }: any) {
         }
     })
 
-    const getCurrentCategory = getPosts.data.posts.data
+   // const getCurrentCategory = getPosts.data.posts.data
 
     return (
-        <div>
-            <h2 className="text-cpink-900 font-bold text-2xl md:text-4xl capitalize pb-5">{params.category}</h2>
-            {getCurrentCategory.length && <CategoryPosts posts={getCurrentCategory}/>}
-        </div>
+        console.log(params)
     )
 }

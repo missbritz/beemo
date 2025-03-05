@@ -63,7 +63,6 @@ const getPostCategories = gql`
             data {
                 id
                 attributes {
-                    Slug
                     Category
                 }
             }
