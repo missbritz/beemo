@@ -4,10 +4,16 @@ export const typeDefs = `#graphql
     type Query {
         posts: getPostData
         myProfile: getMyProfileData
+        lab: getLab
+    }
+
+    type PaginationInput {
+        limit: Int
+        start: Int
     }
 
     type getPostData {
-        data: [getPosts]
+        data: [JSON]
     }
     
     type getMyProfileData {
@@ -77,5 +83,36 @@ export const typeDefs = `#graphql
         paragraph
         list
         quote
+    }
+
+    type getLab {
+        ProjectName: String
+        Tags: String
+        ProjectUrl: String
+        ProjectDescription: String
+        ProjectImage: ImageDef
+    }
+
+    type ImageDef {
+        data: ImageAttr
+    }
+
+    type ImageAttr {
+        id: String
+        attributes: ImageDef
+    }
+
+    type ImageDef {
+        name: String,
+        alternativeText: String,
+        caption: String,
+        width: Int,
+        height: Int,
+        formats: JSON,
+        hash: String,
+        ext: String,
+        mime: String,
+        size: Int,
+        url: String
     }
 `;

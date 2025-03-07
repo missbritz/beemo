@@ -9,7 +9,6 @@ import { getImage } from "../utils/get-image";
 import { StringToArray } from "../utils/string-to-array";
 
 const LabItems = ({ items }: any) => {
-
     return items.length ? items.map((lab:any) => {
         const allChips = StringToArray(lab.attributes.Tags)
         const img = getImage(lab.attributes.ProjectImage)

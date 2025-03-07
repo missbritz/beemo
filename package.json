@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "prepare-env": "cp .env.example .env && cp .env.example .env.development",
-    "start-server": "NODE_OPTIONS='--experimental-specifier-resolution=node' node --loader ts-node/esm --inspect mock-server/server.ts"
+    "start-server": "NODE_OPTIONS='--experimental-specifier-resolution=node' node --loader ts-node/esm --inspect mock-server/server.ts",
+    "prerender": "next build && next export"
   },
   "dependencies": {
     "@apollo/client": "3.10.0-rc.1",
