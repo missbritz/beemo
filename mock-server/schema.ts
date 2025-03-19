@@ -4,7 +4,7 @@ export const typeDefs = `#graphql
     type Query {
         posts(sort: String, pagination: PaginationInput, filters: PostFilters): getPostData
         myProfile: getMyProfileData
-        lab: getLab
+        labs(sort: String): getLabData
     }
 
     input PaginationInput {
@@ -94,15 +94,24 @@ export const typeDefs = `#graphql
         quote
     }
 
+    type getLabData {
+        data: [getLabItems]
+    }
+
+    type getLabItems {
+        id: String
+        attributes: getLab
+    }
+
     type getLab {
         ProjectName: String
         Tags: String
         ProjectUrl: String
         ProjectDescription: String
-        ProjectImage: ImageDef
+        ProjectImage: ImageDataDef
     }
 
-    type ImageDef {
+    type ImageDataDef {
         data: ImageAttr
     }
 

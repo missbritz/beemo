@@ -5,50 +5,17 @@ import { makeExecutableSchema } from '@graphql-tools/schema';
 import { typeDefs } from './schema';
 import casual from 'casual';
 import GraphQLJSON from 'graphql-type-json';
-import { PostsArgs, PostAttributes, Post } from './type';
+import { PostsArgs, PostAttributes, Post, LabItem, LabArgs, LabAttributes } from './type';
+import generateLab from './resolvers/lab';
+import generatePosts from './resolvers/posts';
+import MyProfile from './resolvers/my-profiles';
 
 // Set a fixed seed for consistent data generation
 casual.seed(123);
 
-// Pre-generate posts to ensure consistency
-const generatePosts = () => {
-    const posts = Array.from({ length: 20 }, (_, i) => {
-        const title = casual.title;
-        const category = casual.random_element(['my-category', 'tech', 'lifestyle', 'coding']);
-        const slug = `${title.toLowerCase().replace(/\s+/g, '-')}-${i}`;
-        return {
-            id: `post-${i + 1}`,
-            attributes: {
-                Title: title,
-                Published: casual.date(),
-                Content: [
-                    {
-                        type: 'paragraph',
-                        children: [
-                            { type: 'text', text: casual.description }
-                        ]
-                    },
-                    {
-                        type: 'paragraph',
-                        children: [
-                            { type: 'text', text: casual.description }
-                        ]
-                    }
-                ],
-                Category: category,
-                Summary: casual.description,
-                Slug: slug,
-                MetaTitle: title,
-                MetaKeywords: casual.words(3).split(' ').join(', '),
-                MetaDescription: casual.description,
-            }
-        };
-    });
-    return posts;
-};
-
-// Store the generated posts
+// Store the generated posts and labs
 const posts = generatePosts();
+const lab = generateLab();
 
 const resolvers = {
   JSON: GraphQLJSON,
@@ -75,9 +42,11 @@ const resolvers = {
                     const bValue = b.attributes[field as keyof PostAttributes];
                     
                     if (field === 'Published') {
-                        return direction === 'desc' 
-                            ? new Date(bValue).getTime() - new Date(aValue).getTime()
-                            : new Date(aValue).getTime() - new Date(bValue).getTime();
+                        const aDate = typeof aValue === 'string' ? new Date(aValue) : new Date();
+                        const bDate = typeof bValue === 'string' ? new Date(bValue) : new Date();
+                        return direction === 'desc'
+                            ? bDate.getTime() - aDate.getTime()
+                            : aDate.getTime() - bDate.getTime();
                     }
                     
                     return direction === 'desc'
@@ -104,79 +73,81 @@ const resolvers = {
             };
         }
     },
-    myProfile: () => ({
-        data: {
-            id: casual.uuid,
-            attributes: {
-                MainTitle: casual.title,
-                MyIntro: [
-                    {
-                        type: "paragraph",
-                        children: [
-                            { type: "text", text: "Hello, I'm a software developer!" },
-                            { type: "text", text: "I specialize in frontend development." }
-                        ]
-                    },
-                    {
-                        type: "paragraph",
-                        children: [
-                            { type: "text", text: "Another test paragraph" },
-                            { type: "text", text: "I specialize in frontend development." }
-                        ]
+    myProfile: () => MyProfile(),
+    labs: (_: unknown, { sort }: LabArgs) => {
+        try {
+            let sortedLab = [...lab];
+
+            // Apply sorting if provided
+            if (sort) {
+                const [field, direction = 'desc'] = sort.split(':');
+                sortedLab.sort((a, b) => {
+                    const aValue = a.attributes[field as keyof LabAttributes];
+                    const bValue = b.attributes[field as keyof LabAttributes];
+                    
+                    if (typeof aValue === 'string') {
+                        return direction === 'desc'
+                            ? String(bValue).localeCompare(String(aValue))
+                            : String(aValue).localeCompare(String(bValue));
                     }
-                ],
-                SocialMediaLinks: [
-                    { Label: "LinkedIn", Url: "https://linkedin.com" },
-                    { Label: "Twitter", Url: "https://twitter.com" }
-                ],
-                KitIcons: [
-                    { Label: "GitHub", Url: "https://github.com" },
-                    { Label: "React", Url: "https://reactjs.org" }
-                ]
+                    
+                    // For numeric values
+                    return direction === 'desc'
+                        ? Number(bValue) - Number(aValue)
+                        : Number(aValue) - Number(bValue);
+                });
             }
+
+            return {
+                data: sortedLab
+            };
+        } catch (error) {
+            console.error('Error in lab resolver:', error);
+            return {
+                data: []
+            };
         }
-    }),
-    lab: () => ''
     }
+   }
 };
 
 const mocks = {};
   
-  async function startApolloServer() {
-  
-      const server = new ApolloServer({
-          schema: addMocksToSchema({
-              schema: makeExecutableSchema({ typeDefs, resolvers }),
-              mocks,
-              preserveResolvers: true,
-          }),
-      });
-  
-      const { url } = await startStandaloneServer(server, { 
-          listen: { port: 4000 },
-          context: async ({ req, res }) => {
-              // Add CORS headers
-              res.setHeader('Access-Control-Allow-Origin', '*');
-              res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-              res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
-              
-              // Add headers to match Strapi's behavior
-              res.setHeader('Content-Type', 'application/json');
-              res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-              res.setHeader('Pragma', 'no-cache');
-              res.setHeader('Expires', '0');
-              
-              // Handle preflight requests
-              if (req.method === 'OPTIONS') {
-                  res.statusCode = 204;
-                  res.end();
-              }
-              
-              return {};
-          }
-      });
-      console.log(`🚀 Server listening at: ${url}`);
-  }
+async function startApolloServer() {
+
+    const server = new ApolloServer({
+        schema: addMocksToSchema({
+            schema: makeExecutableSchema({ typeDefs, resolvers }),
+            mocks,
+            preserveResolvers: true,
+        }),
+    });
+
+    const { url } = await startStandaloneServer(server, { 
+        listen: { port: 4000 },
+        context: async ({ req, res }) => {
+            // Add CORS headers
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+            res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
+            
+            // Add headers to match Strapi's behavior
+            res.setHeader('Content-Type', 'application/json');
+            res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+            res.setHeader('Pragma', 'no-cache');
+            res.setHeader('Expires', '0');
+            
+            // Handle preflight requests
+            if (req.method === 'OPTIONS') {
+                res.statusCode = 204;
+                res.end();
+            }
+            
+            return {};
+        }
+    });
+    console.log(`🚀 Server listening at: ${url}`);
+}
 
 //Start Apollo Mock Server
 startApolloServer().catch(err => {
