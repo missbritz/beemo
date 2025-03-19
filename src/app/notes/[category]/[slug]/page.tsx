@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: any) {
 export default async function Page({ params }: any) {
 
     if (!params?.slug) notFound();
-    
+    console.log(params)
     const getCurrentPost = await getEachPost(params.slug)
 
     return (

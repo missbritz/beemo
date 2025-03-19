@@ -6,7 +6,7 @@ const figtree = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Britta Oblan",
-  description: "Software Engineer from Philippines, living in Singapore",
+  description: "Software Engineer from Philippines, living in Melbourne, Australia",
 };
 
 const isProductionGA = process.env.GA_ID || '';

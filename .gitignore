@@ -58,3 +58,6 @@ coverage
 
 # Husky deps
 .husky/_
+
+#deno
+deno.lock

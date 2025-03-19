@@ -1,32 +1,49 @@
 export const typeDefs = `#graphql
+    scalar JSON
+
     type Query {
-        posts: getPostData
+        posts(sort: String, pagination: PaginationInput, filters: PostFilters): getPostData
         myProfile: getMyProfileData
+        labs(sort: String): getLabData
+    }
+
+    input PaginationInput {
+        limit: Int
+        start: Int
+    }
+
+    input PostFilters {
+        Slug: StringFilter
+        Category: StringFilter
+    }
+
+    input StringFilter {
+        eq: String
     }
 
     type getPostData {
-        data: getPosts
+        data: [getPosts]
     }
     
-    type getMyProfileData {
-        data: getMyProfile
-    }
-
     type getPosts {
         id: String
-        attributes: [getPostsAttributes]
+        attributes: getPostsAttributes
     }
 
     type getPostsAttributes {
         Title: String
         Published: String
-        Content: String
+        Content: [JSON]
         Category: String
         Summary: String
         Slug: String
         MetaTitle: String
         MetaKeywords: String
         MetaDescription: String
+    }
+
+    type getMyProfileData {
+        data: getMyProfile
     }
 
     type getMyProfile {
@@ -36,9 +53,19 @@ export const typeDefs = `#graphql
 
     type getProfileAttributes {
         MainTitle: String
-        MyIntro: [getRichTextBlock]
+        MyIntro: [JSON]
         SocialMediaLinks: [getSocialMedia]
         KitIcons: [getKitIcons]
+    }
+
+    type blockType {
+        type: String
+        children: [getMyText]
+    }
+
+    type getMyText {
+        type: String
+        text: String
     }
 
     type getSocialMedia {
@@ -51,17 +78,59 @@ export const typeDefs = `#graphql
         Url: String
     }
 
-    type getRichTextBlock {
-        type: String
-        text: String
-    }
-
     type getParagraphChildren {
-        type: String
+        type: BlockTypes
         level: Int
         format: String
         children: String
         url: String
         text: String
+    }
+
+    enum BlockTypes {
+        heading
+        paragraph
+        list
+        quote
+    }
+
+    type getLabData {
+        data: [getLabItems]
+    }
+
+    type getLabItems {
+        id: String
+        attributes: getLab
+    }
+
+    type getLab {
+        ProjectName: String
+        Tags: String
+        ProjectUrl: String
+        ProjectDescription: String
+        ProjectImage: ImageDataDef
+    }
+
+    type ImageDataDef {
+        data: ImageAttr
+    }
+
+    type ImageAttr {
+        id: String
+        attributes: ImageDef
+    }
+
+    type ImageDef {
+        name: String
+        alternativeText: String
+        caption: String
+        width: Int
+        height: Int
+        formats: JSON
+        hash: String
+        ext: String
+        mime: String
+        size: Int
+        url: String
     }
 `;
