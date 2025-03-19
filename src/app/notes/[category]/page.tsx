@@ -7,10 +7,9 @@ export async function generateStaticParams() {
     const posts = await client.query({
         query: getPostCategories
     })
-
     const allPosts = posts.data.posts.data
     return allPosts.length && allPosts.map((post:any) => {
-       return { category: post?.attributes?.Category, slug: post?.attributes?.Slug }
+        return { category: post?.attributes?.Category, slug: post?.attributes?.Slug }
     })
 }
 
