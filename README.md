@@ -1,6 +1,6 @@
 # beemo
 [![CI Prod](https://github.com/missbritz/beemo/actions/workflows/publish.yml/badge.svg)](https://github.com/missbritz/beemo/actions/workflows/publish.yml)
-Built with Next.js, tailwindCss and is consuming a GraphQL endpoint from Strapi CMS using Apollo Client. Check this out up and running at [https://britzoblan.com](https://britzoblan.com)
+Built with Next.js, tailwindCss and is consuming GraphQL from a self-hosted Strapi CMS. Check this out up and running at [https://britzoblan.com](https://britzoblan.com)
 
 
 ## Getting Started
