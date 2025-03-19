@@ -2,30 +2,35 @@ export const typeDefs = `#graphql
     scalar JSON
 
     type Query {
-        posts: getPostData
+        posts(sort: String, pagination: PaginationInput, filters: PostFilters): PostsResponse
         myProfile: getMyProfileData
         lab: getLab
     }
 
-    type PaginationInput {
+    input PaginationInput {
         limit: Int
         start: Int
     }
 
-    type getPostData {
-        data: [JSON]
-    }
-    
-    type getMyProfileData {
-        data: getMyProfile
+    input PostFilters {
+        Slug: StringFilter
+        Category: StringFilter
     }
 
-    type getPosts {
+    input StringFilter {
+        eq: String
+    }
+
+    type PostsResponse {
+        data: [Post]
+    }
+
+    type Post {
         id: String
-        attributes: getPostsAttributes
+        attributes: PostAttributes
     }
 
-    type getPostsAttributes {
+    type PostAttributes {
         Title: String
         Published: String
         Content: String
@@ -35,6 +40,10 @@ export const typeDefs = `#graphql
         MetaTitle: String
         MetaKeywords: String
         MetaDescription: String
+    }
+    
+    type getMyProfileData {
+        data: getMyProfile
     }
 
     type getMyProfile {
@@ -103,16 +112,16 @@ export const typeDefs = `#graphql
     }
 
     type ImageDef {
-        name: String,
-        alternativeText: String,
-        caption: String,
-        width: Int,
-        height: Int,
-        formats: JSON,
-        hash: String,
-        ext: String,
-        mime: String,
-        size: Int,
+        name: String
+        alternativeText: String
+        caption: String
+        width: Int
+        height: Int
+        formats: JSON
+        hash: String
+        ext: String
+        mime: String
+        size: Int
         url: String
     }
 `;

@@ -5,88 +5,82 @@ import { makeExecutableSchema } from '@graphql-tools/schema';
 import { typeDefs } from './schema';
 import casual from 'casual';
 import GraphQLJSON from 'graphql-type-json';
+import { PostsArgs, PostAttributes, Post } from './type';
 
 const resolvers = {
   JSON: GraphQLJSON,
   Query: {
-    // posts: (_, { sort, pagination }) => { // ✅ Now correctly receives arguments
-    //     console.log("Resolver arguments:", { sort, pagination });
-
-    //     // Default pagination if not provided
-    //     if (!pagination) pagination = { limit: 5, start: 0 };
-
-    //     // Generate mock posts
-    //     const posts = Array.from({ length: 20 }, (_, i) => ({
-    //         id: `${i + 1}`,
-    //         attributes: {
-    //         Title: `Post ${i + 1}`,
-    //         Published: `2024-03-0${i + 1}`,
-    //         Content: `Content of post ${i + 1}`,
-    //         Category: "General",
-    //         Summary: `Summary of post ${i + 1}`,
-    //         Slug: `post-${i + 1}`,
-    //         },
-    //     }));
-
-    //     // Sort (mock behavior)
-    //     const sortedPosts = posts.sort((a, b) =>
-    //         new Date(b.attributes.Published) - new Date(a.attributes.Published)
-    //     );
-
-    //     // Apply pagination
-    //     const paginatedPosts = sortedPosts.slice(
-    //         pagination.start,
-    //         pagination.start + pagination.limit
-    //     );
-
-    //     return { data: paginatedPosts };
-    // },
-    posts: () => ({
-        data: [
-            {
+    posts: (_: unknown, { sort, pagination, filters }: PostsArgs) => {
+        try {
+            // Generate a larger set of mock posts
+            const posts = Array.from({ length: 20 }, (_, i) => ({
                 id: casual.uuid,
                 attributes: {
                     Title: casual.title,
                     Published: casual.date(),
                     Content: casual.description,
-                    Category: 'my-category',
+                    Category: casual.random_element(['my-category', 'tech', 'lifestyle', 'coding']),
                     Summary: casual.description,
                     Slug: `${casual.words(3).split(' ').join('-')}`,
                     MetaTitle: casual.title,
                     MetaKeywords: casual.words(3).split(' ').join(', '),
                     MetaDescription: casual.description,
                 }
-            },
-            {
-                id: casual.uuid,
-                attributes: {
-                    Title: casual.title,
-                    Published: casual.date(),
-                    Content: casual.description,
-                    Category: 'my-category',
-                    Summary: casual.description,
-                    Slug: `${casual.words(3).split(' ').join('-')}`,
-                    MetaTitle: casual.title,
-                    MetaKeywords: casual.words(3).split(' ').join(', '),
-                    MetaDescription: casual.description,
+            }));
+
+            let filteredPosts = [...posts];
+
+            // Apply filters if provided
+            if (filters) {
+                if (filters.Slug?.eq) {
+                    filteredPosts = filteredPosts.filter(post => post.attributes.Slug === filters.Slug?.eq);
                 }
-            },
-            {
-                id: casual.uuid,
-                attributes: {
-                    Title: casual.title,
-                    Published: casual.date(),
-                    Content: casual.description,
-                    Category: 'my-category',
-                    Summary: casual.description,
-                    Slug: `${casual.words(3).split(' ').join('-')}`,
-                    MetaTitle: casual.title,
-                    MetaKeywords: casual.words(3).split(' ').join(', '),
-                    MetaDescription: casual.description,
+                if (filters.Category?.eq) {
+                    filteredPosts = filteredPosts.filter(post => post.attributes.Category === filters.Category?.eq);
                 }
-            },
-        ]
-    }),
+            }
+
+            // Apply sorting if provided
+            if (sort) {
+                // Handle both "field:direction" and "field" formats
+                const [field, direction = 'desc'] = sort.split(':');
+                const validFields = ['Title', 'Published', 'Category', 'Slug'];
+                
+                if (!validFields.includes(field)) {
+                    throw new Error(`Invalid sort field: ${field}`);
+                }
+
+                filteredPosts.sort((a, b) => {
+                    const aValue = a.attributes[field as keyof PostAttributes];
+                    const bValue = b.attributes[field as keyof PostAttributes];
+                    
+                    if (field === 'Published') {
+                        return direction === 'desc' 
+                            ? new Date(bValue).getTime() - new Date(aValue).getTime()
+                            : new Date(aValue).getTime() - new Date(bValue).getTime();
+                    }
+                    
+                    // For non-date fields, use string comparison
+                    return direction === 'desc'
+                        ? String(bValue).localeCompare(String(aValue))
+                        : String(aValue).localeCompare(String(bValue));
+                });
+            }
+
+            // Apply pagination if provided
+            if (pagination) {
+                const { limit = 5, start = 0 } = pagination;
+                filteredPosts = filteredPosts.slice(start, start + limit);
+            }
+
+            return {
+                data: filteredPosts
+            };
+        } catch (error) {
+            console.error('Error in posts resolver:', error);
+            throw error;
+        }
+    },
     myProfile: () => ({
         data: {
             id: casual.uuid,
