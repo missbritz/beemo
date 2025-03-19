@@ -7,27 +7,54 @@ import casual from 'casual';
 import GraphQLJSON from 'graphql-type-json';
 import { PostsArgs, PostAttributes, Post } from './type';
 
+// Set a fixed seed for consistent data generation
+casual.seed(123);
+
+// Pre-generate posts to ensure consistency
+const generatePosts = () => {
+    const posts = Array.from({ length: 20 }, (_, i) => {
+        const title = casual.title;
+        const category = casual.random_element(['my-category', 'tech', 'lifestyle', 'coding']);
+        const slug = `${title.toLowerCase().replace(/\s+/g, '-')}-${i}`;
+        return {
+            id: `post-${i + 1}`,
+            attributes: {
+                Title: title,
+                Published: casual.date(),
+                Content: [
+                    {
+                        type: 'paragraph',
+                        children: [
+                            { type: 'text', text: casual.description }
+                        ]
+                    },
+                    {
+                        type: 'paragraph',
+                        children: [
+                            { type: 'text', text: casual.description }
+                        ]
+                    }
+                ],
+                Category: category,
+                Summary: casual.description,
+                Slug: slug,
+                MetaTitle: title,
+                MetaKeywords: casual.words(3).split(' ').join(', '),
+                MetaDescription: casual.description,
+            }
+        };
+    });
+    return posts;
+};
+
+// Store the generated posts
+const posts = generatePosts();
+
 const resolvers = {
   JSON: GraphQLJSON,
   Query: {
     posts: (_: unknown, { sort, pagination, filters }: PostsArgs) => {
         try {
-            // Generate a larger set of mock posts
-            const posts = Array.from({ length: 20 }, (_, i) => ({
-                id: casual.uuid,
-                attributes: {
-                    Title: casual.title,
-                    Published: casual.date(),
-                    Content: casual.description,
-                    Category: casual.random_element(['my-category', 'tech', 'lifestyle', 'coding']),
-                    Summary: casual.description,
-                    Slug: `${casual.words(3).split(' ').join('-')}`,
-                    MetaTitle: casual.title,
-                    MetaKeywords: casual.words(3).split(' ').join(', '),
-                    MetaDescription: casual.description,
-                }
-            }));
-
             let filteredPosts = [...posts];
 
             // Apply filters if provided
@@ -42,14 +69,7 @@ const resolvers = {
 
             // Apply sorting if provided
             if (sort) {
-                // Handle both "field:direction" and "field" formats
                 const [field, direction = 'desc'] = sort.split(':');
-                const validFields = ['Title', 'Published', 'Category', 'Slug'];
-                
-                if (!validFields.includes(field)) {
-                    throw new Error(`Invalid sort field: ${field}`);
-                }
-
                 filteredPosts.sort((a, b) => {
                     const aValue = a.attributes[field as keyof PostAttributes];
                     const bValue = b.attributes[field as keyof PostAttributes];
@@ -60,7 +80,6 @@ const resolvers = {
                             : new Date(aValue).getTime() - new Date(bValue).getTime();
                     }
                     
-                    // For non-date fields, use string comparison
                     return direction === 'desc'
                         ? String(bValue).localeCompare(String(aValue))
                         : String(aValue).localeCompare(String(bValue));
@@ -73,12 +92,16 @@ const resolvers = {
                 filteredPosts = filteredPosts.slice(start, start + limit);
             }
 
+            // Ensure we always return an array, even if empty
             return {
-                data: filteredPosts
+                data: filteredPosts || []
             };
         } catch (error) {
             console.error('Error in posts resolver:', error);
-            throw error;
+            // Return empty data instead of throwing
+            return {
+                data: []
+            };
         }
     },
     myProfile: () => ({
@@ -129,9 +152,34 @@ const mocks = {};
           }),
       });
   
-      const { url } = await startStandaloneServer(server, { listen: { port: 4000 } });
+      const { url } = await startStandaloneServer(server, { 
+          listen: { port: 4000 },
+          context: async ({ req, res }) => {
+              // Add CORS headers
+              res.setHeader('Access-Control-Allow-Origin', '*');
+              res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+              res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
+              
+              // Add headers to match Strapi's behavior
+              res.setHeader('Content-Type', 'application/json');
+              res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+              res.setHeader('Pragma', 'no-cache');
+              res.setHeader('Expires', '0');
+              
+              // Handle preflight requests
+              if (req.method === 'OPTIONS') {
+                  res.statusCode = 204;
+                  res.end();
+              }
+              
+              return {};
+          }
+      });
       console.log(`🚀 Server listening at: ${url}`);
   }
 
 //Start Apollo Mock Server
-startApolloServer();
+startApolloServer().catch(err => {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+});

@@ -2,7 +2,7 @@ export const typeDefs = `#graphql
     scalar JSON
 
     type Query {
-        posts(sort: String, pagination: PaginationInput, filters: PostFilters): PostsResponse
+        posts(sort: String, pagination: PaginationInput, filters: PostFilters): getPostData
         myProfile: getMyProfileData
         lab: getLab
     }
@@ -21,19 +21,19 @@ export const typeDefs = `#graphql
         eq: String
     }
 
-    type PostsResponse {
-        data: [Post]
+    type getPostData {
+        data: [getPosts]
     }
-
-    type Post {
+    
+    type getPosts {
         id: String
-        attributes: PostAttributes
+        attributes: getPostsAttributes
     }
 
-    type PostAttributes {
+    type getPostsAttributes {
         Title: String
         Published: String
-        Content: String
+        Content: [JSON]
         Category: String
         Summary: String
         Slug: String
@@ -41,7 +41,7 @@ export const typeDefs = `#graphql
         MetaKeywords: String
         MetaDescription: String
     }
-    
+
     type getMyProfileData {
         data: getMyProfile
     }
