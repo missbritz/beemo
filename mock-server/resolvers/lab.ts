@@ -8,7 +8,7 @@ export default function generateLab(): LabItem[] {
             ProjectName: casual.title,
             Tags: casual.word,
             ProjectUrl: casual.url,
-            ProjectDescription: casual.description,
+            ProjectDescription: casual.short_description,
             ProjectImage: {
                 data: {
                     id: casual.uuid,
@@ -16,8 +16,8 @@ export default function generateLab(): LabItem[] {
                         name: casual.word,
                         alternativeText: casual.word,
                         caption: casual.word,
-                        width: casual.integer(100, 1000),
-                        height: casual.integer(100, 1000),
+                        width: 300,
+                        height: 300,
                         formats: {
                             thumbnail: {
                                 name: casual.word,
@@ -27,24 +27,24 @@ export default function generateLab(): LabItem[] {
                                 width: 200,
                                 height: 200,
                                 size: casual.integer(1000, 5000),
-                                url: 'https://placehold.co/600x400'
+                                url: 'https://placehold.co/400x400'
                             },
                             small: {
                                 name: casual.word,
                                 hash: casual.uuid,
                                 ext: '.jpg',
                                 mime: 'image/jpeg',
-                                width: 300,
+                                width: 200,
                                 height: 200,
                                 size: casual.integer(2000, 8000),
-                                url: 'https://placehold.co/600x400'
+                                url: 'https://placehold.co/400x400'
                             }
                         },
                         hash: casual.uuid,
                         ext: '.jpg',
                         mime: 'image/jpeg',
                         size: casual.integer(1000, 5000),
-                        url: 'https://placehold.co/600x400'
+                        url: 'https://placehold.co/400x400'
                     }
                 }
             }
