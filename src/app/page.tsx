@@ -7,17 +7,13 @@ import PageWrapper from "@/components/page-wrapper";
 
 async function Home() {
   try {
-    console.log('Fetching posts...');
     const posts = await client.query({
       query: getLatestFivePosts
     });
-    console.log('Posts fetched successfully:', posts);
 
-    console.log('Fetching profile...');
     const profile = await client.query({
       query: getMyProfile
     });
-    console.log('Profile fetched successfully:', profile);
 
     return (
       <PageWrapper profile={profile}>

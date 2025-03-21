@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: any) {
     return {
         title: `Britta Oblan - ${getCurrentPost[0].attributes.MetaTitle}`,
         keywords: getCurrentPost[0].attributes.MetaTitle,
-        description: getCurrentPost[0].attributes.MetaTitle,
+        description: getCurrentPost[0].attributes.MetaDescription,
       }
 }
 
