@@ -5,19 +5,19 @@ Built with Next.js, tailwindCss and is consuming GraphQL from a self-hosted Stra
 
 ## Getting Started
 ### 1.  Starting the Mock Server
-To start the graphQL mock server, run the following command.  This will start the mock server at `Port:4000`.  You can test the mock server through your browser or postman through `http://localhost:4000`.
+To start the graphQL mock server, run the following command.  This will start the mock server at `Port:4000`.  You can test the mock server through your browser or postman through `http://localhost:4000`.  Replace `yarn` with `npm`, `bun`, `pnpm`
 ```bash
-npm run start-server
+yarn start-server
 ```
 ### 2. Prepare the environment
 Run the command below to prepare the environment
 ```bash
-npm run prepare-env
+yarn prepare-env
 ```
 ### 3. Running the Development Server
 Start the development server:
 ```bash
-npm run dev
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
